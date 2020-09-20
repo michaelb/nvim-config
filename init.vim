@@ -138,6 +138,7 @@ vnoremap f :SnipRun<CR>
 " LSP configs
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition() <CR>
 nnoremap <silent> ? <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> ! <cmd>lua vim.lsp.util.show_line_diagnostics()<CR>
 
 lua << EOF
 require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
@@ -184,8 +185,6 @@ call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiag
 call sign_define("LspDiagnosticsWarningSign", {"text" : "⚡", "texthl" : "LspDiagnosticsWarning"})
 call sign_define("LspDiagnosticsInformationSign", {"text" : "I", "texthl" : "LspDiagnosticsInformation"})
 call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnosticsWarning"})
-autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
-autocmd CursorMoved * lua vim.lsp.util.show_line_diagnostics()
 
 " to activate when its become cool
 " nmap <silent> m :NextDiagnosticCycle<CR>
