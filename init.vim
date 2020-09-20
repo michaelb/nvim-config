@@ -1,3 +1,9 @@
+"auto vim-plug install
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 call plug#begin('~/.local/share/nvim/plugged')
 
 
@@ -5,13 +11,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 "Code completion
 Plug 'zxqfl/tabnine-vim'
 Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 
 "sniprun :-O
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
-
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/playground', {'branch' : 'fix-catch-query-error'}
 
 " linter
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
+Plug 'nvim-lua/diagnostic-nvim'
 
 
 
@@ -38,8 +47,10 @@ Plug 'Yggdroot/indentLine'
 Plug 'thaerk/vim-workspace'
 Plug 'vim-scripts/LargeFile'
 Plug 'michaelb/vim-tips'
-Plug 'ojroques/vim-scrollstatus'
 Plug 'lervag/vimtex'
+Plug 'TaDaa/vimade'
+Plug 'Xuyuanp/scrollbar.nvim'
+
 call plug#end()
 
 let g:tex_flavor='latex'
@@ -62,15 +73,10 @@ inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 map <F2> :NERDTree<CR>
 
 
-let g:airline_section_x = '%{ScrollStatus()} '
-let g:airline_section_y = airline#section#create_right(['filetype'])
-let g:airline_section_z = airline#section#create([
-            \ '%#__accent_bold#%3l%#__restore__#/%L', ' ',
-            \ '%#__accent_bold#%3v%#__restore__#/%3{virtcol("$") - 1}',
-            \ ])
 
 "nvim settings cause why not
-syntax on
+
+syntax enable
 set encoding=utf-8
 set clipboard=unnamed
 set clipboard+=unnamedplus
@@ -84,6 +90,11 @@ set expandtab
 set shiftwidth=2
 set shiftround
 set nomodeline "useless anyway
+
+" COLORS!
+set termguicolors
+colorscheme custom
+
 
 " part of vim-polyglot
 let g:vim_markdown_conceal = 0
@@ -107,6 +118,17 @@ map <C-J> <C-W>j<C-W>
 map <C-K> <C-W>k<C-W>
 
 
+augroup my_config_scrollbar_nvim
+    autocmd!
+    autocmd BufEnter    * silent! lua require('scrollbar').show()
+    autocmd BufLeave    * silent! lua require('scrollbar').clear()
+
+    autocmd CursorMoved * silent! lua require('scrollbar').show()
+    autocmd VimResized  * silent! lua require('scrollbar').show()
+
+    autocmd FocusGained * silent! lua require('scrollbar').show()
+    autocmd FocusLost   * silent! lua require('scrollbar').clear()
+augroup end
 
 
 "sniprun line/bloc shortcut
@@ -118,23 +140,62 @@ nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition() <CR>
 nnoremap <silent> ? <cmd>lua vim.lsp.buf.hover()<CR>
 
 lua << EOF
-require'nvim_lsp'.rls.setup{}
-require'nvim_lsp'.rust_analyzer.setup{}
-vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
+require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.rls.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.bashls.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.clangd.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.vimls.setup{on_attach=require'diagnostic'.on_attach}
+require'nvim_lsp'.gopls.setup{on_attach=require'diagnostic'.on_attach}
 EOF
-"potential LSPs
-"require'nvim_lsp'.pyls.setup{}
-" require'nvim_lsp'.bashls.setup{}
-" require'nvim_lsp'.clangd.setup{}
-" require'nvim_lsp'.gopls.setup{}
+" to disable diagnostics
+  " lua vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
+
+
+"potential LSPs, additionnal can be added with :LspInstall
+"require'nvim_lsp'.rust_analyzer.setup{}
 " require'nvim_lsp'.julials.setup{}
 " require'nvim_lsp'.kotlin_language_server.setup{}
 " require'nvim_lsp'.sumneko_lua.setup{}
-" require'nvim_lsp'.vimls.setup{}
 
-"linter ale settings
-let g:airline#extensions#ale#enabled=1
 
+lua << EOF
+require "nvim-treesitter.configs".setup {
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false -- Whether the query persists across vim sessions
+  }
+}
+EOF
+"
+
+
+
+
+
+" diagnostic config
+let g:diagnostic_enable_virtual_text=0
+let g:diagnostic_level = 'Warning'
+let g:diagnostic_virtual_text_prefix = '<<'
+let g:diagnostic_trimmed_virtual_text = 0
+let g:diagnostic_insert_delay = 1
+call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiagnosticsError"})
+call sign_define("LspDiagnosticsWarningSign", {"text" : "⚡", "texthl" : "LspDiagnosticsWarning"})
+call sign_define("LspDiagnosticsInformationSign", {"text" : "I", "texthl" : "LspDiagnosticsInformation"})
+call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnosticsWarning"})
+autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+autocmd CursorMoved * lua vim.lsp.util.show_line_diagnostics()
+
+" to activate when its become cool
+" nmap <silent> m :NextDiagnosticCycle<CR>
+" nmap <silent>   :PrevDiagnosticCycle<CR>
+
+
+
+
+
+"
 "hide selection after hitting return in command mode
 nnoremap <silent> <CR> :noh<CR>: <CR>
 
@@ -179,9 +240,14 @@ let g:workspace_session_disable_on_args=1
 
 
 
+
 "autoformat code with F3 or at file save
 "but only with known formatters
 let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 noremap <F3> :Autoformat<CR>
 au BufWrite * :Autoformat
+
+
+
+

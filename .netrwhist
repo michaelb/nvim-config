@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/michael/ExperimentBox/vim-tips'
+let g:netrw_dirhist_4='/home/michael/.oh-my-zsh/plugins/autojump'
+let g:netrw_dirhist_3='/home/michael/Documents/BoulotAskip/POO/tpl/.git'
+let g:netrw_dirhist_2='/home/michael/.config/autostart-scripts'
+let g:netrw_dirhist_1='/home/michael/ExperimentBox/go-ai/Makefile'
