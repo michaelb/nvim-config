@@ -9,47 +9,56 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 
 "Code completion
-Plug 'zxqfl/tabnine-vim'
-Plug 'neovim/nvim-lsp'
-Plug 'neovim/nvim-lspconfig'
+Plug 'zxqfl/tabnine-vim' " the best autocompleter <3
 
 "sniprun :-O
-Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
+Plug 'michaelb/sniprun', {'do': 'bash install.sh', 'branch': 'dev'}
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground', {'branch' : 'fix-catch-query-error'}
 
 " linter
-" Plug 'dense-analysis/ale'
 Plug 'nvim-lua/diagnostic-nvim'
+Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig' "collection of common configs
+Plug 'tjdevries/lsp_extensions.nvim'
 
 
 
 
-
-"misc
+"files + tags navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'zackhsi/fzf-tags'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'markonm/traces.vim'
-Plug 'wellle/targets.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-repeat'
-Plug 'flwyd/vim-conjoin'
-Plug 'rhysd/git-messenger.vim'
+
+
+Plug 'markonm/traces.vim' "selection/substitution preview
+Plug 'wellle/targets.vim' "additionnal text objects such as ')', ','
+Plug 'sheerun/vim-polyglot' "config for all languages (color, etc...)
+Plug 'tpope/vim-endwise' "autoadd 'end' symbols (bash, ruby, lua....
+Plug 'tpope/vim-repeat' "allow . to repeat plugin actions
+Plug 'flwyd/vim-conjoin' "join string when joining lines spanned by a multiline string
+Plug 'rhysd/git-messenger.vim'       "see preview of git commit introducing line
+
 Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'Chiel92/vim-autoformat'
-Plug 'tomtom/tcomment_vim'
-Plug 'scrooloose/nerdTree'
-Plug 'Yggdroot/indentLine'
-Plug 'thaerk/vim-workspace'
+
+Plug 'tomtom/tcomment_vim' "comment with the motion gc
+Plug 'Yggdroot/indentLine' "display indentation level with thins lines
+Plug 'thaerk/vim-workspace' "better workspaces
+
 Plug 'vim-scripts/LargeFile'
 Plug 'michaelb/vim-tips'
+
 Plug 'lervag/vimtex'
-Plug 'TaDaa/vimade'
+
+Plug 'TaDaa/vimade' "fades unfocused buffer
+
 Plug 'Xuyuanp/scrollbar.nvim'
+" debugguer, needs config
+" Plug 'mfussenegger/nvim-dap'
+" Plug 'theHamsta/nvim-dap-virtual-text'
 
 call plug#end()
 
@@ -58,6 +67,11 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
+
+
+"
+let g:vimade = {}
+let g:vimade.fadelevel = 0.7
 
 
 "vim-autoformat settings for corect java
@@ -136,9 +150,10 @@ nnoremap ff :SnipRun<CR>
 vnoremap f :SnipRun<CR>
 
 " LSP configs
-nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition() <CR>
+" nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition() <CR>
 nnoremap <silent> ? <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> ! <cmd>lua vim.lsp.util.show_line_diagnostics()<CR>
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 
 lua << EOF
 require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
@@ -158,29 +173,33 @@ EOF
 " require'nvim_lsp'.kotlin_language_server.setup{}
 " require'nvim_lsp'.sumneko_lua.setup{}
 
-
-lua << EOF
-require "nvim-treesitter.configs".setup {
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false -- Whether the query persists across vim sessions
-  }
-}
-EOF
+"
+" lua << EOF
+" require "nvim-treesitter.configs".setup {
+"   playground = {
+"     enable = true,
+"     disable = {},
+"     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+"     persist_queries = false -- Whether the query persists across vim sessions
+"   }
+" }
+" require'nvim-treesitter.configs'.setup {
+"   highlight = {
+"     enable = true,
+"     },
+"   }
+" EOF
 "
 
 
 
-
-
 " diagnostic config
-let g:diagnostic_enable_virtual_text=0
+let g:diagnostic_enable_virtual_text=1
 let g:diagnostic_level = 'Warning'
 let g:diagnostic_virtual_text_prefix = '<<'
-let g:diagnostic_trimmed_virtual_text = 0
+let g:diagnostic_trimmed_virtual_text = 20
 let g:diagnostic_insert_delay = 1
+let g:diagnostic_enable_underline = 0
 call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiagnosticsError"})
 call sign_define("LspDiagnosticsWarningSign", {"text" : "⚡", "texthl" : "LspDiagnosticsWarning"})
 call sign_define("LspDiagnosticsInformationSign", {"text" : "I", "texthl" : "LspDiagnosticsInformation"})
@@ -190,8 +209,8 @@ call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnos
 " nmap <silent> m :NextDiagnosticCycle<CR>
 " nmap <silent>   :PrevDiagnosticCycle<CR>
 
-
-
+" display type hints
+autocmd InsertLeave,BufEnter * lua require'lsp_extensions'.inlay_hints{prefix ='', highlight = "Comment"}
 
 
 "
@@ -203,7 +222,7 @@ nnoremap <silent> <CR> :noh<CR>: <CR>
 map q <Nop>
 
 " fzf maps
-nnoremap <silent> <C-P> :Files<CR>
+nnoremap <silent> <C-P> :GFiles<CR>
 nnoremap <silent> <C-L> :Tags<CR>
 
 
