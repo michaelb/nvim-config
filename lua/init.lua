@@ -12,3 +12,22 @@ require'nvim_lsp'.gopls.setup{on_attach=on_attach_vim}
 -- to disable diagnostics
    -- lua vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
 
+-- potential LSPs, additionnal can be added with :LspInstall
+-- require'nvim_lsp'.rust_analyzer.setup{}
+-- require'nvim_lsp'.julials.setup{}
+-- require'nvim_lsp'.kotlin_language_server.setup{}
+-- require'nvim_lsp'.sumneko_lua.setup{}
+--
+-- require "nvim-treesitter.configs".setup {
+--   playground = {
+--     enable = true,
+--     disable = {},
+--     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+--     persist_queries = false -- Whether the query persists across vim sessions
+--   }
+-- }
+-- require'nvim-treesitter.configs'.setup {
+--   highlight = {
+--     enable = true,
+--     },
+--   }

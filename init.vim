@@ -10,8 +10,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 "Code completion
 Plug 'zxqfl/tabnine-vim' " the best autocompleter <3
-Plug 'nvim-lua/completion-nvim'
-Plug 'aca/completion-tabnine', {'do': './install.sh'}
+
+" to re-enable when PC more powerful
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'aca/completion-tabnine', {'do': './install.sh'}
 
 "sniprun :-O
 Plug 'michaelb/sniprun', {'do': 'bash install.sh', 'branch': 'dev'}
@@ -111,13 +113,6 @@ let g:completion_tabnine_sort_by_details=1
 
 
 
-
-
-
-
-
-
-
 "git blame/ see commit
 nnoremap gb  :GitMessenger<CR>
 
@@ -188,43 +183,7 @@ nnoremap <silent> ! <cmd>lua vim.lsp.util.show_line_diagnostics()<CR>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 
 lua require'init'
-"
-" lua << EOF
-" require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
-" require'nvim_lsp'.rls.setup{on_attach=require'diagnostic'.on_attach}
-" require'nvim_lsp'.bashls.setup{on_attach=require'diagnostic'.on_attach}
-" require'nvim_lsp'.clangd.setup{on_attach=require'diagnostic'.on_attach}
-" require'nvim_lsp'.vimls.setup{on_attach=require'diagnostic'.on_attach}
-" require'nvim_lsp'.gopls.setup{on_attach=require'diagnostic'.on_attach}
-" EOF
-" to disable diagnostics
-  " lua vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
 
-
-"potential LSPs, additionnal can be added with :LspInstall
-"require'nvim_lsp'.rust_analyzer.setup{}
-" require'nvim_lsp'.julials.setup{}
-" require'nvim_lsp'.kotlin_language_server.setup{}
-" require'nvim_lsp'.sumneko_lua.setup{}
-
-"
-" lua << EOF
-" require "nvim-treesitter.configs".setup {
-"   playground = {
-"     enable = true,
-"     disable = {},
-"     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-"     persist_queries = false -- Whether the query persists across vim sessions
-"   }
-" }
-" lua <<EOF
-" require'nvim-treesitter.configs'.setup {
-"   highlight = {
-"     enable = true,
-"     },
-"   }
-" EOF
-"
 
 
 
