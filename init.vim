@@ -10,6 +10,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 "Code completion
 Plug 'zxqfl/tabnine-vim' " the best autocompleter <3
+Plug 'nvim-lua/completion-nvim'
+Plug 'aca/completion-tabnine', {'do': './install.sh'}
 
 "sniprun :-O
 Plug 'michaelb/sniprun', {'do': 'bash install.sh', 'branch': 'dev'}
@@ -49,16 +51,25 @@ Plug 'Yggdroot/indentLine' "display indentation level with thins lines
 Plug 'thaerk/vim-workspace' "better workspaces
 
 Plug 'vim-scripts/LargeFile'
-Plug 'michaelb/vim-tips'
+Plug 'michaelb/vim-tips', {'branch':'dev'}
 
 Plug 'lervag/vimtex'
 
 Plug 'TaDaa/vimade' "fades unfocused buffer
 
+
+Plug 'reedes/vim-wheel'
+
 Plug 'Xuyuanp/scrollbar.nvim'
+" Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
+" "too bad the plugin is great
+
+
 " debugguer, needs config
 " Plug 'mfussenegger/nvim-dap'
 " Plug 'theHamsta/nvim-dap-virtual-text'
+"
+Plug 'tikhomirov/vim-glsl'
 
 call plug#end()
 
@@ -74,6 +85,11 @@ let g:vimade = {}
 let g:vimade.fadelevel = 0.7
 
 
+let g:vim_tips_tips_frequency=0.9
+
+
+
+
 "vim-autoformat settings for corect java
 let g:formatdef_customjava="'astyle --mode=java --pad-oper -xe'"
 let g:formatters_java=['customjava']
@@ -82,10 +98,28 @@ let g:formatters_java=['customjava']
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
+let g:completion_chain_complete_list = {
+    \ 'default': [
+    \    {'complete_items': ['lsp', 'snippet', 'tabnine' ]},
+    \    {'mode': '<c-p>'},
+    \    {'mode': '<c-n>'}
+    \]
+\}
+let g:completion_tabnine_priority = 5
+let g:completion_tabnine_sort_by_details=1
 
-"fullscreen mode
-map <F2> :NERDTree<CR>
 
+
+
+
+
+
+
+
+
+
+"git blame/ see commit
+nnoremap gb  :GitMessenger<CR>
 
 
 "nvim settings cause why not
@@ -99,11 +133,11 @@ set mouse=a
 set nobackup
 set ignorecase
 set smartcase
-set tabstop=2
 set expandtab
 set shiftwidth=2
 set shiftround
 set nomodeline "useless anyway
+set completeopt-=preview "diable preview in tabnine
 
 " COLORS!
 set termguicolors
@@ -116,8 +150,8 @@ let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_json_syntax_conceal = 0
 
 set autoindent
-set smartindent
-set cindent
+filetype plugin indent on
+" set cindent
 
 set foldmethod=indent
 set foldlevel=6
@@ -131,7 +165,6 @@ map <C-H> <C-W>h<C-W>
 map <C-J> <C-W>j<C-W>
 map <C-K> <C-W>k<C-W>
 
-
 augroup my_config_scrollbar_nvim
     autocmd!
     autocmd BufEnter    * silent! lua require('scrollbar').show()
@@ -144,7 +177,6 @@ augroup my_config_scrollbar_nvim
     autocmd FocusLost   * silent! lua require('scrollbar').clear()
 augroup end
 
-
 "sniprun line/bloc shortcut
 nnoremap ff :SnipRun<CR>
 vnoremap f :SnipRun<CR>
@@ -155,14 +187,16 @@ nnoremap <silent> ? <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> ! <cmd>lua vim.lsp.util.show_line_diagnostics()<CR>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 
-lua << EOF
-require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.rls.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.bashls.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.clangd.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.vimls.setup{on_attach=require'diagnostic'.on_attach}
-require'nvim_lsp'.gopls.setup{on_attach=require'diagnostic'.on_attach}
-EOF
+lua require'init'
+"
+" lua << EOF
+" require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
+" require'nvim_lsp'.rls.setup{on_attach=require'diagnostic'.on_attach}
+" require'nvim_lsp'.bashls.setup{on_attach=require'diagnostic'.on_attach}
+" require'nvim_lsp'.clangd.setup{on_attach=require'diagnostic'.on_attach}
+" require'nvim_lsp'.vimls.setup{on_attach=require'diagnostic'.on_attach}
+" require'nvim_lsp'.gopls.setup{on_attach=require'diagnostic'.on_attach}
+" EOF
 " to disable diagnostics
   " lua vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
 
@@ -183,6 +217,7 @@ EOF
 "     persist_queries = false -- Whether the query persists across vim sessions
 "   }
 " }
+" lua <<EOF
 " require'nvim-treesitter.configs'.setup {
 "   highlight = {
 "     enable = true,
@@ -210,7 +245,7 @@ call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnos
 " nmap <silent>   :PrevDiagnosticCycle<CR>
 
 " display type hints
-autocmd InsertLeave,BufEnter * lua require'lsp_extensions'.inlay_hints{prefix ='', highlight = "Comment"}
+" autocmd InsertLeave,BufEnter * lua require'lsp_extensions'.inlay_hints{prefix ='', highlight = "Comment"}
 
 
 "
@@ -244,8 +279,6 @@ nnoremap j gj
 nnoremap k gk
 
 
-"Nerdtree stuff
-map <C-d> :NERDTreeToggle<CR>
 
 " large file size in mb
 let g:LargeFile=2
