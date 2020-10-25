@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =7
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/michael/ExperimentBox/treesitter-analyzer/src/rpc'
 let g:netrw_dirhist_7='/home/michael/ExperimentBox/vim-tips/plugin'
 let g:netrw_dirhist_6='/home/michael/ExperimentBox/sniprun/lua'
 let g:netrw_dirhist_5='/home/michael/ExperimentBox/vim-tips'

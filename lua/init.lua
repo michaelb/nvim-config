@@ -9,6 +9,7 @@ require'nvim_lsp'.clangd.setup{on_attach=on_attach_vim}
 require'nvim_lsp'.vimls.setup{on_attach=on_attach_vim}
 require'nvim_lsp'.gopls.setup{on_attach=on_attach_vim}
 
+
 -- to disable diagnostics
    -- lua vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
 

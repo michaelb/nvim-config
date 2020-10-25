@@ -11,7 +11,15 @@ call plug#begin('~/.local/share/nvim/plugged')
 "Code completion
 Plug 'zxqfl/tabnine-vim' " the best autocompleter <3
 
-" to re-enable when PC more powerful
+" More completion sources when necessary
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
+" needs nextword + nextword-data dependencies
+" Plug 'high-moctane/asyncomplete-nextword.vim'
+
+
+" to re-enable when PC more powerful, and when things less buggy
 " Plug 'nvim-lua/completion-nvim'
 " Plug 'aca/completion-tabnine', {'do': './install.sh'}
 
@@ -82,7 +90,7 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 
 
-"
+" unfocused split slightly faded
 let g:vimade = {}
 let g:vimade.fadelevel = 0.7
 
@@ -91,26 +99,37 @@ let g:vim_tips_tips_frequency=0.9
 
 
 
-
 "vim-autoformat settings for corect java
 let g:formatdef_customjava="'astyle --mode=java --pad-oper -xe'"
 let g:formatters_java=['customjava']
 
 "autocompletion stuff
+" auto close preview window when done
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<tab>"
+inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"preview windows on bottom
+set splitbelow
 
-let g:completion_chain_complete_list = {
-    \ 'default': [
-    \    {'complete_items': ['lsp', 'snippet', 'tabnine' ]},
-    \    {'mode': '<c-p>'},
-    \    {'mode': '<c-n>'}
-    \]
-\}
-let g:completion_tabnine_priority = 5
-let g:completion_tabnine_sort_by_details=1
-
-
+" register tabnine as completion source
+" call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
+"   \ 'name': 'tabnine',
+"   \ 'allowlist': ['*'],
+"   \ 'completor': function('asyncomplete#sources#tabnine#completor'),
+"   \ 'config': {
+"   \   'line_limit': 1000,
+"   \   'max_num_result': 20,
+"   \  },
+"   \ }))
+"
+"
+" call asyncomplete#register_source(asyncomplete#sources#nextword#get_source_options({
+"             \   'name': 'nextword',
+"             \   'allowlist': ['*'],
+"             \   'args': ['-n', '10000'],
+"             \   'completor': function('asyncomplete#sources#nextword#completor')
+"             \   }))
+"
 
 
 "git blame/ see commit
@@ -132,7 +151,9 @@ set expandtab
 set shiftwidth=2
 set shiftround
 set nomodeline "useless anyway
-set completeopt-=preview "diable preview in tabnine
+" set completeopt-=preview "disable preview in tabnine
+
+
 
 " COLORS!
 set termguicolors
