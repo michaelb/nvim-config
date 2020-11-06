@@ -24,7 +24,7 @@ Plug 'zxqfl/tabnine-vim' " the best autocompleter <3
 " Plug 'aca/completion-tabnine', {'do': './install.sh'}
 
 "sniprun :-O
-Plug 'michaelb/sniprun', {'do': 'bash install.sh', 'branch': 'dev'}
+Plug 'michaelb/sniprun', {'do': 'bash install.sh 1', 'branch':'dev'}
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/playground', {'branch' : 'fix-catch-query-error'}
 
@@ -34,8 +34,7 @@ Plug 'neovim/nvim-lsp'
 Plug 'neovim/nvim-lspconfig' "collection of common configs
 Plug 'tjdevries/lsp_extensions.nvim'
 
-
-
+Plug 'ncm2/float-preview.nvim'
 
 "files + tags navigation
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -56,7 +55,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'Chiel92/vim-autoformat'
 
-Plug 'tomtom/tcomment_vim' "comment with the motion gc
+Plug 'tomtom/tcomment_vim' "comment with motion +  gc
 Plug 'Yggdroot/indentLine' "display indentation level with thins lines
 Plug 'thaerk/vim-workspace' "better workspaces
 
@@ -67,6 +66,7 @@ Plug 'lervag/vimtex'
 
 Plug 'TaDaa/vimade' "fades unfocused buffer
 
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 Plug 'reedes/vim-wheel'
 
@@ -99,6 +99,8 @@ let g:vim_tips_tips_frequency=0.9
 
 
 
+
+
 "vim-autoformat settings for corect java
 let g:formatdef_customjava="'astyle --mode=java --pad-oper -xe'"
 let g:formatters_java=['customjava']
@@ -109,7 +111,7 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "preview windows on bottom
-set splitbelow
+" set splitbelow
 
 " register tabnine as completion source
 " call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
@@ -151,7 +153,11 @@ set expandtab
 set shiftwidth=2
 set shiftround
 set nomodeline "useless anyway
-" set completeopt-=preview "disable preview in tabnine
+
+" set completeopt+=preview "disable preview in tabnine
+set completeopt=noinsert,menuone,noselect
+set shortmess+=c
+set noshowmode
 
 
 

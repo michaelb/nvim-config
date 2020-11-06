@@ -1,10 +1,12 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =8
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/michael/ExperimentBox/sniprun/src/interpreters'
+let g:netrw_dirhist_3='/home/michael/ExperimentBox/sniprun/src/interpreters/Python3_original'
+let g:netrw_dirhist_2='/home/michael/ExperimentBox/sniprun/src/interpreters'
+let g:netrw_dirhist_1='/home/michael/ExperimentBox/sniprun/src/interpreters/Python3_original'
+let g:netrw_dirhist_0='/home/michael/Documents/BoulotAskip/modelisation/resurf/resurf/demo'
+let g:netrw_dirhist_9='/home/michael/Documents/BoulotAskip/modelisation/resurf/resurf'
 let g:netrw_dirhist_8='/home/michael/ExperimentBox/treesitter-analyzer/src/rpc'
 let g:netrw_dirhist_7='/home/michael/ExperimentBox/vim-tips/plugin'
 let g:netrw_dirhist_6='/home/michael/ExperimentBox/sniprun/lua'
 let g:netrw_dirhist_5='/home/michael/ExperimentBox/vim-tips'
-let g:netrw_dirhist_4='/home/michael/.oh-my-zsh/plugins/autojump'
-let g:netrw_dirhist_3='/home/michael/Documents/BoulotAskip/POO/tpl/.git'
-let g:netrw_dirhist_2='/home/michael/.config/autostart-scripts'
-let g:netrw_dirhist_1='/home/michael/ExperimentBox/go-ai/Makefile'
