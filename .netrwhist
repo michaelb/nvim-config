@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =4
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/home/michael/ExperimentBox/sniprun/src/interpreters/Python3_original'
 let g:netrw_dirhist_4='/home/michael/ExperimentBox/sniprun/src/interpreters'
 let g:netrw_dirhist_3='/home/michael/ExperimentBox/sniprun/src/interpreters/Python3_original'
 let g:netrw_dirhist_2='/home/michael/ExperimentBox/sniprun/src/interpreters'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_9='/home/michael/Documents/BoulotAskip/modelisation/resurf/r
 let g:netrw_dirhist_8='/home/michael/ExperimentBox/treesitter-analyzer/src/rpc'
 let g:netrw_dirhist_7='/home/michael/ExperimentBox/vim-tips/plugin'
 let g:netrw_dirhist_6='/home/michael/ExperimentBox/sniprun/lua'
-let g:netrw_dirhist_5='/home/michael/ExperimentBox/vim-tips'
