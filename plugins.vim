@@ -12,16 +12,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 "Code completion
 
 " More completion sources when necessary
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/async.vim'
-" Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
+" plug 'prabirshrestha/asyncomplete.vim'
+" plug 'prabirshrestha/async.vim'
+" plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
 " needs nextword + nextword-data dependencies
-" Plug 'high-moctane/asyncomplete-nextword.vim'
+" plug 'high-moctane/asyncomplete-nextword.vim'
 
 
-" to re-enable when PC more powerful, and when things less buggy
-" Plug 'nvim-lua/completion-nvim'
-" Plug 'aca/completion-tabnine', {'do': './install.sh'}
+" to re-enable when pc more powerful, and when things less buggy
+" plug 'nvim-lua/completion-nvim'
+" plug 'aca/completion-tabnine', {'do': './install.sh'}
 Plug 'zxqfl/tabnine-vim' "  autocompletion <3
 
 "write  & run
@@ -81,7 +81,7 @@ Plug 'Xuyuanp/scrollbar.nvim'
 "
 Plug 'tikhomirov/vim-glsl'
 
-Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'nvim-treesitter/playground', {'branch' : 'fix-catch-query-error'}
+" Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'nvim-treesitter/playground', {'branch' : 'fix-catch-query-error'}
 
 call plug#end()

@@ -12,7 +12,10 @@ set expandtab
 set shiftwidth=2
 set shiftround
 set nomodeline "useless anyway
+set lazyredraw "perf?
+set shortmess+=c
 
+set spelllang=en,fr
 " set completeopt+=preview "disable preview in tabnine
 set completeopt=noinsert,menuone,noselect
 set shortmess+=c
@@ -20,7 +23,6 @@ set noshowmode
 set wildmode=longest:full,full
 set wildignore+=*/tmp/*,/var/*,*.so,*.swp,*.zip,*.tar,*.pyc  " macOS/Linux
 set path+=**  " add current file location to path
-
 
 
 " use ripgrep if available

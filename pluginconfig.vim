@@ -8,7 +8,6 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 
 
-
 " unfocused split slightly faded
 let g:vimade = {}
 let g:vimade.fadelevel = 0.8

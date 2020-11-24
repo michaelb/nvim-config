@@ -1,5 +1,5 @@
-local nvim_lsp=require('nvim_lsp')
-
+local lspconfig = require'lspconfig'
+local configs = require'lspconfig/configs'
 
 local on_attach_vim = function()
   -- require'completion'.on_attach()
@@ -7,12 +7,28 @@ local on_attach_vim = function()
 end
 
 
-require'nvim_lsp'.rls.setup{on_attach=on_attach_vim}
-require'nvim_lsp'.bashls.setup{on_attach=on_attach_vim}
-require'nvim_lsp'.clangd.setup{on_attach=on_attach_vim}
-require'nvim_lsp'.vimls.setup{on_attach=on_attach_vim}
-require'nvim_lsp'.gopls.setup{on_attach=on_attach_vim}
-require'nvim_lsp'.pyls.setup{on_attach=on_attach_vim}
+lspconfig.rls.setup{on_attach=on_attach_vim}
+lspconfig.bashls.setup{on_attach=on_attach_vim}
+lspconfig.clangd.setup{on_attach=on_attach_vim}
+lspconfig.vimls.setup{on_attach=on_attach_vim}
+lspconfig.gopls.setup{on_attach=on_attach_vim}
+lspconfig.pyls.setup{on_attach=on_attach_vim}
+
+
+-- Check if it's already defined for when I reload this file.
+configs.glsl_lsp = {
+  default_config = {
+    cmd = {"/home/michael/scripts/glsl-language-server/build/glslls","--stdin"};
+    filetypes = {'glsl','frag','vert'};
+    root_dir = function(fname)
+      return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
+    end;
+    settings = {};
+  };
+}
+lspconfig.glsl_lsp.setup{on_attach=on_attach_vim}
+
+
 
 -- special python langserver (pyrigth) while it's not merged in nvim-lspconfigs
 -- local configs = require('nvim_lsp/configs')
