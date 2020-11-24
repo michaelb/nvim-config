@@ -8,6 +8,10 @@ set conceallevel=1
 let g:tex_conceal='abdmg'
 
 
+" move selection around horizontally, similarly to the mapping for line move
+vmap <M-h> <Plug>(MvVisLeft)
+vmap <M-l> <Plug>(MvVisRight)
+
 " unfocused split slightly faded
 let g:vimade = {}
 let g:vimade.fadelevel = 0.8

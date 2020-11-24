@@ -58,6 +58,7 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'tomtom/tcomment_vim' "comment with motion +  gc
 Plug 'Yggdroot/indentLine' "display indentation level with thins lines
 Plug 'thaerk/vim-workspace' "better workspaces
+Plug 'Jorengarenar/vim-MvVis'
 
 Plug 'vim-scripts/LargeFile'
 Plug 'michaelb/vim-tips', {'branch':'dev'}
