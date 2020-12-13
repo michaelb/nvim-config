@@ -44,7 +44,12 @@ set foldlevel=6
 set incsearch "jumps to search word as you type (annoying but excellent)
 set wildignore=*.o,*.obj,*.bak,*.exe "ignore those in tabfind completion
 
-
+" Use persistent history.
+if !isdirectory("/tmp/.vim-undo-dir")
+    call mkdir("/tmp/.vim-undo-dir", "", 0700)
+endif
+set undodir=/tmp/.vim-undo-dir
+set undofile
 
 "save / restore session
 command! S ToggleWorkspace

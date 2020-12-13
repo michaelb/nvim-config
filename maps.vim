@@ -55,12 +55,6 @@ nnoremap <silent> <C-L> :Tags<CR>
 " M = Alt key
 nnoremap <silent> <M-k> :move-2<CR>
 nnoremap <silent> <M-j> :move+<CR>
-"indent/outdent current line
-nnoremap <silent> <M-h> <<
-nnoremap <silent> <M-l> >>
-" move selection up/down
-xnoremap <silent> <M-k> :move-2<CR>gv
-xnoremap <silent> <M-j> :move'>+<CR>gv
 
 " Remove newbie crutches in Normal Mode
 nnoremap <Down> <Nop>

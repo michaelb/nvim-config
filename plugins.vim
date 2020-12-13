@@ -12,26 +12,27 @@ call plug#begin('~/.local/share/nvim/plugged')
 "Code completion
 
 " More completion sources when necessary
-" plug 'prabirshrestha/asyncomplete.vim'
-" plug 'prabirshrestha/async.vim'
-" plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
 " needs nextword + nextword-data dependencies
-" plug 'high-moctane/asyncomplete-nextword.vim'
+" Plug 'high-moctane/asyncomplete-nextword.vim'
 
 
 " to re-enable when pc more powerful, and when things less buggy
-" plug 'nvim-lua/completion-nvim'
-" plug 'aca/completion-tabnine', {'do': './install.sh'}
+" Plug 'nvim-lua/completion-nvim'
+" Plug 'aca/completion-tabnine', {'do': './install.sh'}
 Plug 'zxqfl/tabnine-vim' "  autocompletion <3
-
-"write  & run
+"
+" "write  & run
 Plug 'michaelb/sniprun', {'do': 'bash install.sh 1', 'branch':'dev'}
-
-" linter
-Plug 'nvim-lua/diagnostic-nvim'
-Plug 'neovim/nvim-lsp'
+"
+" " linter
 Plug 'neovim/nvim-lspconfig' "collection of common configs
 Plug 'tjdevries/lsp_extensions.nvim'
+
+
+
 
 Plug 'ncm2/float-preview.nvim'
 
@@ -69,9 +70,9 @@ Plug 'TaDaa/vimade' "fades unfocused buffer
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-Plug 'reedes/vim-wheel'
 
-Plug 'Xuyuanp/scrollbar.nvim'
+" Plug 'Xuyuanp/scrollbar.nvim'
+" Plug 'dstein64/nvim-scrollview', {'branch': 'main'}
 " Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 " "too bad the plugin is great
 
