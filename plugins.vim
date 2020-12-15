@@ -72,7 +72,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 
 " Plug 'Xuyuanp/scrollbar.nvim'
-" Plug 'dstein64/nvim-scrollview', {'branch': 'main'}
+Plug 'dstein64/nvim-scrollview', {'branch': 'main'}
 " Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 " "too bad the plugin is great
 
