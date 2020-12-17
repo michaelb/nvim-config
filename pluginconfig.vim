@@ -32,16 +32,17 @@ let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_json_syntax_conceal = 0
 
 " diagnostic config
+set signcolumn=no
 let g:diagnostic_enable_virtual_text=1
 let g:diagnostic_level = 'Warning'
 let g:diagnostic_virtual_text_prefix = '<<'
 let g:diagnostic_trimmed_virtual_text = 20
 let g:diagnostic_insert_delay = 1
-let g:diagnostic_enable_underline = 0
-call sign_define("LspDiagnosticsErrorSign", {"text" : "✘", "texthl" : "LspDiagnosticsError"})
-call sign_define("LspDiagnosticsWarningSign", {"text" : "⚡", "texthl" : "LspDiagnosticsWarning"})
-call sign_define("LspDiagnosticsInformationSign", {"text" : "I", "texthl" : "LspDiagnosticsInformation"})
-call sign_define("LspDiagnosticsHintSign", {"text" : "H", "texthl" : "LspDiagnosticsWarning"})
+let g:diagnostic_enable_underline = 1
+call sign_define("LspDiagnosticsError", {"text" : "<<", "texthl" : "LspDiagnosticsError"})
+call sign_define("LspDiagnosticsWarning", {"text" : "<", "texthl" : "LspDiagnosticsWarning"})
+call sign_define("LspDiagnosticsInformation", {"text" : ":", "texthl" : "LspDiagnosticsInformation"})
+call sign_define("LspDiagnosticsHint", {"text" : "->", "texthl" : "LspDiagnosticsWarning"})
 
 " to activate when its become cool
 " nmap <silent> m :NextDiagnosticCycle<CR>

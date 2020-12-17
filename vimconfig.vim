@@ -28,6 +28,8 @@ set path+=**  " add current file location to path
 " use ripgrep if available
 if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+  let g:rg_derive_root='true'
+  let g:gutentags_file_list_command = 'rg --files'
 endif
 
 " COLORS!
