@@ -1,13 +1,15 @@
-
+nnoremap <Space> <Nop>
+let mapleader = " "
 
 "autocompletion stuff
 " auto close preview window when done
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<tab>"
 inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" inoremap <expr><CR> pumvisible() ? "\<C-Y>" : "\<CR>"
+noremap pumvisible() ? "\" : " "
 "preview windows on bottom
 " set splitbelow
-
 
 
 
@@ -26,7 +28,7 @@ au BufWrite * :Autoformat
 nnoremap gb  :GitMessenger<CR>
 
 "sniprun line/bloc shortcut
-nnoremap ff :SnipRun<CR>
+nnoremap <leader>f :SnipRun<CR>
 vnoremap f :SnipRun<CR>
 
 

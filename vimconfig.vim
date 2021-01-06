@@ -37,14 +37,16 @@ set termguicolors
 colorscheme custom
 
 
-set autoindent
-filetype plugin indent on
-" set cindent
 
 set foldmethod=indent
 set foldlevel=6
 set incsearch "jumps to search word as you type (annoying but excellent)
 set wildignore=*.o,*.obj,*.bak,*.exe "ignore those in tabfind completion
+
+filetype plugin on
+filetype indent on
+set autoindent
+
 
 " Use persistent history.
 if !isdirectory("/tmp/.vim-undo-dir")
@@ -57,3 +59,5 @@ set undofile
 command! S ToggleWorkspace
 let g:workspace_session_disable_on_args=1
 
+
+"autocmd Filetype python setlocal indentexpr=

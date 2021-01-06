@@ -50,7 +50,7 @@ Plug 'tpope/vim-endwise' "autoadd 'end' symbols (bash, ruby, lua....
 Plug 'tpope/vim-repeat' "allow . to repeat plugin actions
 Plug 'flwyd/vim-conjoin' "join string when joining lines spanned by a multiline string
 Plug 'rhysd/git-messenger.vim'       "see preview of git commit introducing line
-Plug 'rhysd/clever-f.vim'
+"Plug 'rhysd/clever-f.vim'
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-airline/vim-airline'

@@ -7,7 +7,7 @@ lspconfig.bashls.setup{}
 lspconfig.clangd.setup{}
 lspconfig.vimls.setup{}
 lspconfig.gopls.setup{}
-lspconfig.pyls.setup{}
+lspconfig.jedi_language_server.setup{}
 
 
 -- Check if it's already defined for when I reload this file.
