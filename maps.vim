@@ -4,15 +4,14 @@ let mapleader = " "
 "autocompletion stuff
 " auto close preview window when done
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<tab>"
-inoremap <expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" inoremap <expr><CR> pumvisible() ? "\<C-Y>" : "\<CR>"
-noremap pumvisible() ? "\" : " "
-"preview windows on bottom
-" set splitbelow
-
-
-
+function! s:ClosePumOrReturnNewline()
+    if pumvisible()
+        return "\<C-y>\<CR>"
+    else
+        return "\<CR>"
+    endif
+endfunction
+inoremap <silent> <CR> <C-r>=<SID>ClosePumOrReturnNewline()<CR>
 
 "quick jump between split
 map <C-L> <C-W>l<C-W>
@@ -75,4 +74,5 @@ vnoremap <Up> <Nop>
 nnoremap j gj
 nnoremap k gk
 
-
+cabbr qw wq
+cabbr wwq wq
