@@ -35,7 +35,7 @@ vnoremap f :SnipRun<CR>
 " LSP configs
 " nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition() <CR>
 nnoremap <silent> ? <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> ! <cmd>lua vim.lsp.util.show_line_diagnostics()<CR>
+nnoremap <silent> ! <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 
 
