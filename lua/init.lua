@@ -36,3 +36,7 @@ lspconfig.glsl_lsp.setup{}
 -- require'nvim_lsp'.kotlin_language_server.setup{}
 -- require'nvim_lsp'.sumneko_lua.setup{}
 -- require'nvim_lsp'.jedi_language_server.setup{}
+
+
+
+

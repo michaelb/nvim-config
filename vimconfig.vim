@@ -59,5 +59,6 @@ set undofile
 command! S ToggleWorkspace
 let g:workspace_session_disable_on_args=1
 
+" start terminal in insert mode
+autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
-"autocmd Filetype python setlocal indentexpr=

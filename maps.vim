@@ -57,6 +57,11 @@ nnoremap <silent> <C-L> :Tags<CR>
 nnoremap <silent> <M-k> :move-2<CR>
 nnoremap <silent> <M-j> :move+<CR>
 
+" replace with last yank (not deleted or cut)
+nnoremap <leader>p "0p
+nnoremap <leader>P "0P
+
+
 " Remove newbie crutches in Normal Mode
 nnoremap <Down> <Nop>
 nnoremap <Left> <Nop>
@@ -76,3 +81,34 @@ nnoremap k gk
 
 cabbr qw wq
 cabbr wwq wq
+
+
+
+
+
+
+" floating terminal (from lua/terminal.lua)
+tnoremap <silent> <leader>n <C-\><C-n>:lua require('terminal').toggle()<CR>
+nnoremap <silent> <leader>n :lua require('terminal').toggle()<CR>
+
+
+" move between panels while in terminal mode
+tnoremap <c-j> <c-\><c-n><c-w>j
+tnoremap <c-k> <c-\><c-n><c-w>k
+tnoremap <c-l> <c-\><c-n><c-w>l
+tnoremap <c-h> <c-\><c-n><c-w>h
+
+" dropdown, persistent terminal {
+set splitbelow
+function! OpenTerminal()
+  split term://zsh
+  resize 10
+endfunction
+
+nnoremap <leader>b :call OpenTerminal()<cr>
+
+" turn terminal to normal mode with escape
+tnoremap <esc> <c-\><c-n>
+" exit with :q
+tnoremap <leader>b <c-\><c-n>:q<cr>
+

@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =8
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/michael/Documents/BoulotAskip/multimedia/tp/wmlab/src'
 let g:netrw_dirhist_8='/home/michael/.config/nvim/colors'
 let g:netrw_dirhist_7='/home/michael/Documents/BoulotAskip/modelisation/resurf/resurf/demo'
 let g:netrw_dirhist_6='/home/michael/Documents/BoulotAskip/sia/projet_sia/tp_michael'
@@ -9,4 +10,3 @@ let g:netrw_dirhist_3='/home/michael/ExperimentBox/sniprun/src/interpreters/Pyth
 let g:netrw_dirhist_2='/home/michael/ExperimentBox/sniprun/src/interpreters'
 let g:netrw_dirhist_1='/home/michael/ExperimentBox/sniprun/src/interpreters/Python3_original'
 let g:netrw_dirhist_0='/home/michael/Documents/BoulotAskip/modelisation/resurf/resurf/demo'
-let g:netrw_dirhist_9='/home/michael/Documents/BoulotAskip/modelisation/resurf/resurf'
