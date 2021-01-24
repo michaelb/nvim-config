@@ -14,6 +14,7 @@ set shiftround
 set nomodeline "useless anyway
 set lazyredraw "perf?
 set shortmess+=c
+set splitright
 
 set spelllang=en,fr
 " set completeopt+=preview "disable preview in tabnine
