@@ -21,7 +21,7 @@ map <C-K> <C-W>k<C-W>
 
 " autoformat with F3 or file save
 noremap <F3> :Autoformat<CR>
-au BufWrite * :Autoformat
+" au BufWrite * :Autoformat
 
 "git blame/ see commit
 nnoremap gb  :GitMessenger<CR>

@@ -30,8 +30,8 @@ Plug 'michaelb/sniprun', {'do': 'bash install.sh 1', 'branch':'dev'}
 " " linter
 Plug 'neovim/nvim-lspconfig' "collection of common configs
 Plug 'tjdevries/lsp_extensions.nvim'
-
-
+Plug 'RishabhRD/nvim-lsputils'
+Plug 'alexaandru/nvim-lspupdate'
 
 
 Plug 'ncm2/float-preview.nvim'
@@ -56,7 +56,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'Chiel92/vim-autoformat'
 
-Plug 'tomtom/tcomment_vim' "comment with motion +  gc
+Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine' "display indentation level with thins lines
 Plug 'thaerk/vim-workspace' "better workspaces
 Plug 'Jorengarenar/vim-MvVis'

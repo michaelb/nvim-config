@@ -17,6 +17,9 @@ let g:vimade = {}
 let g:vimade.fadelevel = 0.8
 
 
+let g:SnipRun_repl_behavior_enable = ["Python3_jupyter"]
+
+
 let g:vim_tips_tips_frequency=0.9
 
 
