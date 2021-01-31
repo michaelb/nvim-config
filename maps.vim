@@ -27,8 +27,8 @@ noremap <F3> :Autoformat<CR>
 nnoremap gb  :GitMessenger<CR>
 
 "sniprun line/bloc shortcut
-nnoremap <leader>f :SnipRun<CR>
-vnoremap f :SnipRun<CR>
+nmap <leader>f <Plug>SnipRun
+vmap f <Plug>SnipRun
 
 
 " LSP configs
@@ -84,12 +84,13 @@ cabbr wwq wq
 
 
 
-
+let g:vim_printer_print_below_keybinding = '<leader>j'
+let g:vim_printer_print_above_keybinding = '<leader>k'
 
 
 " floating terminal (from lua/terminal.lua)
-tnoremap <silent> <leader>n <C-\><C-n>:lua require('terminal').toggle()<CR>
-nnoremap <silent> <leader>n :lua require('terminal').toggle()<CR>
+tnoremap <silent> <leader><leader> <C-\><C-n>:lua require('terminal').toggle()<CR>
+nnoremap <silent> <leader><leader> :lua require('terminal').toggle()<CR>
 
 
 " move between panels while in terminal mode
@@ -105,10 +106,6 @@ function! OpenTerminal()
   resize 10
 endfunction
 
-nnoremap <leader>b :call OpenTerminal()<cr>
 
-" turn terminal to normal mode with escape
-tnoremap <esc> <c-\><c-n>
-" exit with :q
-tnoremap <leader>b <c-\><c-n>:q<cr>
+nnoremap <leader>m :MarkdownPreview<CR>
 

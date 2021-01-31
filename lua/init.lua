@@ -11,17 +11,17 @@ lspconfig.jedi_language_server.setup{}
 
 
 -- Check if it's already defined for when I reload this file.
-configs.glsl_lsp = {
-  default_config = {
-    cmd = {"/home/michael/scripts/glsl-language-server/build/glslls","--stdin"};
-    filetypes = {'glsl','frag','vert'};
-    root_dir = function(fname)
-      return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
-    end;
-    settings = {};
-  };
-}
-lspconfig.glsl_lsp.setup{}
+-- configs.glsl_lsp = {
+--   default_config = {
+--     cmd = {"/home/michael/scripts/glsl-language-server/build/glslls","--stdin"};
+--     filetypes = {'glsl','frag','vert'};
+--     root_dir = function(fname)
+--       return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
+--     end;
+--     settings = {};
+--   };
+-- }
+-- lspconfig.glsl_lsp.setup{}
 
 
 

@@ -70,6 +70,7 @@ Plug 'TaDaa/vimade' "fades unfocused buffer
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
+Plug 'michaelb/vim-printer'
 
 " Plug 'Xuyuanp/scrollbar.nvim'
 Plug 'dstein64/nvim-scrollview', {'branch': 'main'}
