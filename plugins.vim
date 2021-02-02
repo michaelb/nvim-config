@@ -32,14 +32,18 @@ Plug 'neovim/nvim-lspconfig' "collection of common configs
 Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'alexaandru/nvim-lspupdate'
-
+Plug 'kosayoda/nvim-lightbulb'
 
 Plug 'ncm2/float-preview.nvim'
 
 "files + tags navigation
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'zackhsi/fzf-tags'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
+" Plug 'zackhsi/fzf-tags'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'ludovicchabant/vim-gutentags'
 
 
@@ -53,8 +57,9 @@ Plug 'rhysd/git-messenger.vim'       "see preview of git commit introducing line
 "Plug 'rhysd/clever-f.vim'
 
 Plug 'editorconfig/editorconfig-vim'
-Plug 'vim-airline/vim-airline'
 Plug 'Chiel92/vim-autoformat'
+" Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim/'
 
 Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine' "display indentation level with thins lines
@@ -66,7 +71,7 @@ Plug 'michaelb/vim-tips', {'branch':'dev'}
 
 Plug 'lervag/vimtex'
 
-Plug 'TaDaa/vimade' "fades unfocused buffer
+" Plug 'TaDaa/vimade' "fades unfocused buffer
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
@@ -84,7 +89,9 @@ Plug 'dstein64/nvim-scrollview', {'branch': 'main'}
 "
 Plug 'tikhomirov/vim-glsl'
 
-" Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'nvim-treesitter/playground', {'branch' : 'fix-catch-query-error'}
+"
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
 
 call plug#end()

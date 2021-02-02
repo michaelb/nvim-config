@@ -47,9 +47,17 @@ nnoremap U <C-R>
 "disable fkin recording
 map q <Nop>
 
-" fzf maps
-nnoremap <silent> <C-P> :GFiles<CR>
-nnoremap <silent> <C-L> :Tags<CR>
+" fzf-telescope maps
+nnoremap <silent> <C-P> :lua require'telescope.builtin'.git_files{}<CR>
+nnoremap <silent> <C-L> :lua require'telescope.builtin'.tags{}<CR>
+nnoremap <silent> <leader>a :lua require'telescope.builtin'.lsp_code_action{}<CR>
+nnoremap <silent> <leader>t :lua require'telescope.builtin'.treesitter{}<CR>
+nnoremap <silent> <leader>s :lua require'telescope.builtin'.symbols{}<CR>
+nnoremap <silent> <leader>w :lua require'telescope.builtin'.keymaps{}<CR>
+nnoremap <silent> <leader>c :lua require'telescope.builtin'.colorscheme{}<CR>
+
+
+
 
 "--- some brilliant line movement mappings from junegunn ---"
 " move current line up/down
@@ -79,8 +87,10 @@ vnoremap <Up> <Nop>
 nnoremap j gj
 nnoremap k gk
 
+" fat fingers things
 cabbr qw wq
 cabbr wwq wq
+cabbr ww w
 
 
 
@@ -99,7 +109,7 @@ tnoremap <c-k> <c-\><c-n><c-w>k
 tnoremap <c-l> <c-\><c-n><c-w>l
 tnoremap <c-h> <c-\><c-n><c-w>h
 
-" dropdown, persistent terminal {
+" dropdown, persistent terminal, may want to keep
 set splitbelow
 function! OpenTerminal()
   split term://zsh

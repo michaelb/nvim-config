@@ -15,6 +15,7 @@ vmap <M-l> <Plug>(MvVisRight)
 
 " unfocused split slightly faded
 let g:vimade = {}
+let g:vimade.normalncid = 'TS'
 let g:vimade.fadelevel = 0.8
 
 
@@ -28,13 +29,15 @@ let g:vim_tips_tips_frequency=0.9
 let g:formatdef_customjava="'astyle --mode=java --pad-oper -xe'"
 let g:formatters_java=['customjava']
 
-
-
 " part of vim-polyglot
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_json_syntax_conceal = 0
+    
 
+let g:ycm_filetype_blacklist = {"TelescopePrompt" : 0}
+autocmd FileType TelescopePrompt let g:ycm_auto_trigger = 1
+    
 " diagnostic config
 set signcolumn=no
 let g:diagnostic_enable_virtual_text=1
@@ -56,9 +59,14 @@ call sign_define("LspDiagnosticsHint", {"text" : "->", "texthl" : "LspDiagnostic
 " autocmd InsertLeave,BufEnter * lua require'lsp_extensions'.inlay_hints{prefix ='', highlight = "Comment"}
 
 
+autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+call sign_define('LightBulbSign', { "text" : "o", "texthl": "", "linehl":"", "numhl":"" })
+
+
+
 
 " large file size in mb
-let g:LargeFile=2
+let g:LargeFile=20
 
 
 "autoformat

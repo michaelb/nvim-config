@@ -17,8 +17,8 @@ set shortmess+=c
 set splitright
 
 set spelllang=en,fr
-" set completeopt+=preview "disable preview in tabnine
 set completeopt=noinsert,menuone,noselect
+" set completeopt+=preview "disable preview in tabnine
 set shortmess+=c
 set noshowmode
 set wildmode=longest:full,full
@@ -34,8 +34,8 @@ if executable('rg')
 endif
 
 " COLORS!
-set termguicolors
-colorscheme custom
+" set termguicolors
+colorscheme aurora
 
 
 
