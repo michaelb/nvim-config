@@ -18,6 +18,8 @@ set lazyredraw "perf?
 set shortmess+=c
 set splitright
 
+set exrc "per-project config override possible in local .nvimrc
+
 set spelllang=en,fr
 set completeopt=noinsert,menuone,noselect
 " set completeopt+=preview "disable preview in tabnine
@@ -28,6 +30,9 @@ set wildignore+=*/tmp/*,/var/*,*.so,*.swp,*.zip,*.tar,*.pyc  " macOS/Linux
 set path+=**  " add current file location to path
 
 
+set signcolumn=yes "keep sing gutter open
+
+
 " use ripgrep if available
 if executable('rg')
   set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
@@ -36,8 +41,7 @@ if executable('rg')
 endif
 
 " COLORS!
-" set termguicolors
-colorscheme aurora
+colorscheme aurorae
 
 
 

@@ -3,7 +3,9 @@ local configs = require'lspconfig/configs'
 
 
 local saga = require'lspsaga'
-saga.init_lsp_saga()
+saga.init_lsp_saga{
+  code_action_keys = { quit = '<Esc>',exec = '<CR>' }
+}
 
 
 -- lspconfig.rls.setup{}
@@ -12,7 +14,7 @@ lspconfig.bashls.setup{}
 lspconfig.clangd.setup{}
 lspconfig.vimls.setup{}
 lspconfig.gopls.setup{}
-lspconfig.jedi_language_server.setup{}
+lspconfig.pyls.setup{}
 
 
 -- Check if it's already defined for when I reload this file.

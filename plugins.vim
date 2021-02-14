@@ -50,7 +50,7 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'preservim/nerdtree'
 
-
+Plug 'chrisbra/Colorizer'
 
 Plug 'markonm/traces.vim' "selection/substitution preview
 Plug 'wellle/targets.vim' "additionnal text objects such as ')', ','
@@ -98,7 +98,7 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'nvim-treesitter/playground', {'branch' : 'fix-catch-query-error'}
 "
-Plug 'christianchiarulli/nvcode-color-schemes.vim'
+Plug 'michaelb/nvcode-color-schemes.vim'
 
 
 " must be last plugin called

@@ -24,6 +24,7 @@ let g:SnipRun_repl_behavior_enable = ["Python3_jupyter"]
 
 let g:vim_tips_tips_frequency=0.9
 
+let g:nvcode_termcolors=256
 
 "vim-autoformat settings for corect java
 let g:formatdef_customjava="'astyle --mode=java --pad-oper -xe'"

@@ -39,9 +39,7 @@ nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> <leader>a <cmd>lua require('lspsaga.codeaction').code_action()<CR>
 vnoremap <silent> <leader>a <cmd>'<'>lua require('lspsaga.codeaction').range_code_action()<CR>
 "scroll down hover doc or scroll in definition preview
-nnoremap <silent> <leader><down> <cmd>lua require('lspsaga.hover').smart_scroll_with_saga(1)<CR>
-"scroll up hover doc
-nnoremap <silent> <leader><up> <cmd>lua require('lspsaga.hover').smart_scroll_with_saga(-1)<CR>
+"
 "show signature help
 nnoremap <silent> <leader>s <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
 
