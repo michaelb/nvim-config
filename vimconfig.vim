@@ -8,6 +8,8 @@ set mouse=a
 set nobackup
 set ignorecase
 set smartcase
+set showmatch
+set softtabstop
 set expandtab
 set shiftwidth=2
 set shiftround
@@ -19,8 +21,8 @@ set splitright
 set spelllang=en,fr
 set completeopt=noinsert,menuone,noselect
 " set completeopt+=preview "disable preview in tabnine
-set shortmess+=c
 set noshowmode
+set wildmenu
 set wildmode=longest:full,full
 set wildignore+=*/tmp/*,/var/*,*.so,*.swp,*.zip,*.tar,*.pyc  " macOS/Linux
 set path+=**  " add current file location to path
@@ -56,9 +58,6 @@ endif
 set undodir=/tmp/.vim-undo-dir
 set undofile
 
-"save / restore session
-command! S ToggleWorkspace
-let g:workspace_session_disable_on_args=1
 
 " start terminal in insert mode
 autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif

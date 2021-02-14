@@ -33,10 +33,21 @@ vmap f <Plug>SnipRun
 
 " LSP configs
 " nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition() <CR>
-nnoremap <silent> ? <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> ! <cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <silent> ? <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
+nnoremap <silent> ! <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> <leader>a <cmd>lua require('lspsaga.codeaction').code_action()<CR>
+vnoremap <silent> <leader>a <cmd>'<'>lua require('lspsaga.codeaction').range_code_action()<CR>
+"scroll down hover doc or scroll in definition preview
+nnoremap <silent> <leader><down> <cmd>lua require('lspsaga.hover').smart_scroll_with_saga(1)<CR>
+"scroll up hover doc
+nnoremap <silent> <leader><up> <cmd>lua require('lspsaga.hover').smart_scroll_with_saga(-1)<CR>
+"show signature help
+nnoremap <silent> <leader>s <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
 
+nnoremap <silent> <leader>r <cmd>lua require('lspsaga.rename').rename()<CR>
+nnoremap <silent> <leader>h <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
+nnoremap <silent> <leader>l <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
 
 "hide selection after hitting return in command mode
 nnoremap <silent> <CR> :noh<CR>: <CR>
@@ -50,13 +61,12 @@ map q <Nop>
 " fzf-telescope maps
 nnoremap <silent> <C-P> :lua require'telescope.builtin'.git_files{}<CR>
 nnoremap <silent> <C-L> :lua require'telescope.builtin'.tags{}<CR>
-nnoremap <silent> <leader>a :lua require'telescope.builtin'.lsp_code_action{}<CR>
 nnoremap <silent> <leader>t :lua require'telescope.builtin'.treesitter{}<CR>
-nnoremap <silent> <leader>s :lua require'telescope.builtin'.symbols{}<CR>
 nnoremap <silent> <leader>w :lua require'telescope.builtin'.keymaps{}<CR>
 nnoremap <silent> <leader>c :lua require'telescope.builtin'.colorscheme{}<CR>
 
 
+noremap <leader>e :NERDTreeToggle<CR>
 
 
 "--- some brilliant line movement mappings from junegunn ---"

@@ -29,7 +29,9 @@ Plug 'michaelb/sniprun', {'do': 'bash install.sh 1', 'branch':'dev'}
 "
 " " linter
 Plug 'neovim/nvim-lspconfig' "collection of common configs
-Plug 'tjdevries/lsp_extensions.nvim'
+" Plug 'tjdevries/lsp_extensions.nvim' "inlay hint for rust-analyzer, but does
+" not work very well for now
+Plug 'glepnir/lspsaga.nvim'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'alexaandru/nvim-lspupdate'
 Plug 'kosayoda/nvim-lightbulb'
@@ -45,6 +47,9 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-symbols.nvim'
 Plug 'ludovicchabant/vim-gutentags'
+
+Plug 'preservim/nerdtree'
+
 
 
 Plug 'markonm/traces.vim' "selection/substitution preview
@@ -71,7 +76,8 @@ Plug 'michaelb/vim-tips', {'branch':'dev'}
 
 Plug 'lervag/vimtex'
 
-" Plug 'TaDaa/vimade' "fades unfocused buffer
+" Plug 'TaDaa/vimade' "fades unfocused buffer, but conflicts with treesitter
+Plug 'RRethy/vim-illuminate'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
@@ -93,5 +99,9 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'nvim-treesitter/playground', {'branch' : 'fix-catch-query-error'}
 "
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
+
+
+" must be last plugin called
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()

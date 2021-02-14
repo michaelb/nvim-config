@@ -2,6 +2,10 @@ local lspconfig = require'lspconfig'
 local configs = require'lspconfig/configs'
 
 
+local saga = require'lspsaga'
+saga.init_lsp_saga()
+
+
 -- lspconfig.rls.setup{}
 lspconfig.rust_analyzer.setup{}
 lspconfig.bashls.setup{}
@@ -33,7 +37,6 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
-
 -- to disable diagnostics if issue still exists
    -- lua vim.lsp.callbacks["textDocument/publishDiagnostics"] = function() end
 
@@ -42,6 +45,11 @@ require'nvim-treesitter.configs'.setup {
 -- require'nvim_lsp'.kotlin_language_server.setup{}
 -- require'nvim_lsp'.sumneko_lua.setup{}
 -- require'nvim_lsp'.jedi_language_server.setup{}
+--
+--
+
+
+require('_telescope')
 
 
 

@@ -34,39 +34,37 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 let g:vim_json_syntax_conceal = 0
     
+autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 
 let g:ycm_filetype_blacklist = {"TelescopePrompt" : 0}
 autocmd FileType TelescopePrompt let g:ycm_auto_trigger = 1
     
 " diagnostic config
-set signcolumn=no
-let g:diagnostic_enable_virtual_text=1
-let g:diagnostic_level = 'Warning'
-let g:diagnostic_virtual_text_prefix = '<<'
-let g:diagnostic_trimmed_virtual_text = 20
-let g:diagnostic_insert_delay = 1
-let g:diagnostic_enable_underline = 1
-call sign_define("LspDiagnosticsError", {"text" : "<<", "texthl" : "LspDiagnosticsError"})
-call sign_define("LspDiagnosticsWarning", {"text" : "<", "texthl" : "LspDiagnosticsWarning"})
-call sign_define("LspDiagnosticsInformation", {"text" : ":", "texthl" : "LspDiagnosticsInformation"})
-call sign_define("LspDiagnosticsHint", {"text" : "->", "texthl" : "LspDiagnosticsWarning"})
+" sign define LspDiagnosticsSignError text=⏻ texthl=LspDiagnosticsVirtualTextError linehl= numhl=
+" sign define LspDiagnosticsSignWarning text=⏼  texthl=LspDiagnosticsSignWarning
+" sign define LspDiagnosticsSignInformation text=⏽ texthl=LspDiagnosticsSignInformation
+" sign define LspDiagnosticsSignHint text=⭘ texthl=LspDiagnosticsSignHint
 
-" to activate when its become cool
-" nmap <silent> m :NextDiagnosticCycle<CR>
-" nmap <silent>   :PrevDiagnosticCycle<CR>
 
-" display type hints
+let g:git_messenger_no_default_mappings = v:true
+
+
+" display type hints for rust-analyzer with lsp_extensions.nvim
 " autocmd InsertLeave,BufEnter * lua require'lsp_extensions'.inlay_hints{prefix ='', highlight = "Comment"}
 
+" some symbols that match my font (jetbrain mono)@ & ¶ § © ® ™ ° ′ ″ | ¦ † ℓ ‡ № ª º ℮ Δ Ω λ μ π ℕ ¢ ¤ $ ₫ € ƒ £ ₮ ₽ ¥ ∈ ≡ ∃ ∉ ⊄ + − × ÷ = ≠ > < ≥ ≤ ± ≈ ~ ¬ ^ ∞ ∅ ∧ ∨ ∫ ∏ ∑ √ ∂ µ % ‰ ⊂ ⊃ ⊆ ⊇ ∼ ∋ ⁺ ∌ ∐ ∕ ∙ ∣ ∥ ∷ ≉ ⊅ ∀ ↑ ↗ → ↘ ↓ ↙ ← ↖ ↔ ↕ ● ◆ ◊ ■ ▲ ▶ ▼ ◀ ⏻ ⏼ ⭘ ⏽ ⏾ ⍴        . , : ; … ! ¡ ? ¿ · • * # ․ / ( ) { } [ ] - ­ – — _ ‐ ‚ „ “ ” ‘ ’ « » ‹ › " ' ⟨ ⟩
 
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
-call sign_define('LightBulbSign', { "text" : "o", "texthl": "", "linehl":"", "numhl":"" })
+call sign_define('LightBulbSign', { "text" : "●", "texthl": "", "linehl":"", "numhl":"" })
 
 
+autocmd VimEnter * silent NERDTree | wincmd p
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
 
 
 " large file size in mb
-let g:LargeFile=20
+let g:LargeFile=5
 
 
 "autoformat
@@ -75,18 +73,17 @@ let g:autoformat_autoindent = 0
 let g:autoformat_retab = 0
 
 
-augroup my_config_scrollbar_nvim
-    autocmd!
-    autocmd BufEnter    * silent! lua require('scrollbar').show()
-    autocmd BufLeave    * silent! lua require('scrollbar').clear()
+"scrollbar
+let g:scrollview_current_only = 1
 
-    autocmd CursorMoved * silent! lua require('scrollbar').show()
-    autocmd VimResized  * silent! lua require('scrollbar').show()
 
-    autocmd FocusGained * silent! lua require('scrollbar').show()
-    autocmd FocusLost   * silent! lua require('scrollbar').clear()
-augroup end
 
+"save / restore session
+command! S ToggleWorkspace
+let g:workspace_session_disable_on_args=1
+let g:workspace_persist_undo_history = 0 "undodir already done
+let g:workspace_create_new_tabs = 0
+let g:workspace_autosave_untrailspaces = 0
 
 " register tabnine as completion source
 " call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
