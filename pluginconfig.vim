@@ -59,7 +59,23 @@ autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 call sign_define('LightBulbSign', { "text" : "●", "texthl": "", "linehl":"", "numhl":"" })
 
 
-autocmd VimEnter * silent NERDTree | wincmd p
+autocmd VimEnter * silent NERDTreeVCS %|  wincmd p
+" autocmd BufEnter * if &modifiable | NERDTreeFind | wincmd p | endif
+
+" returns true iff is NERDTree open/active
+function! s:isNTOpen()        
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+" calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
+function! s:syncTree()
+  if &modifiable && s:isNTOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+autocmd BufEnter * call s:syncTree()
+
+
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
