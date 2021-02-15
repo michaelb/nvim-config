@@ -68,7 +68,6 @@ Plug 'itchyny/lightline.vim/'
 
 Plug 'tpope/vim-commentary'
 Plug 'Yggdroot/indentLine' "display indentation level with thins lines
-Plug 'thaerk/vim-workspace' "better workspaces
 Plug 'Jorengarenar/vim-MvVis'
 
 Plug 'vim-scripts/LargeFile'
@@ -87,6 +86,8 @@ Plug 'michaelb/vim-printer'
 Plug 'dstein64/nvim-scrollview', {'branch': 'main'}
 " Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
 " "too bad the plugin is great
+
+Plug 'rhysd/conflict-marker.vim' " git conflicts faster resolution
 
 
 " debugguer, needs config

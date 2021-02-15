@@ -67,6 +67,20 @@ nnoremap <silent> <leader>c :lua require'telescope.builtin'.colorscheme{}<CR>
 noremap <leader>e :NERDTreeToggle<CR>
 
 
+
+"git merge conflict resolution
+
+nnoremap <silent> <leader>gn <Plug>(conflict-marker-next-hunk)
+nnoremap <silent> <leader>gp <Plug>(conflict-marker-prev-hunk)
+nnoremap <silent> <leader>go <Plug>(conflict-marker-ourselves)
+nnoremap <silent> <leader>gt <Plug>(conflict-marker-themselves)
+nnoremap <silent> <leader>gb <Plug>(conflict-marker-both)
+
+
+
+
+
+
 "--- some brilliant line movement mappings from junegunn ---"
 " move current line up/down
 " M = Alt key

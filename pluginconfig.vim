@@ -49,6 +49,8 @@ autocmd FileType TelescopePrompt let g:ycm_auto_trigger = 1
 
 let g:git_messenger_no_default_mappings = v:true
 
+let g:conflict_marker_enable_mappings = 0
+
 
 " display type hints for rust-analyzer with lsp_extensions.nvim
 " autocmd InsertLeave,BufEnter * lua require'lsp_extensions'.inlay_hints{prefix ='', highlight = "Comment"}
@@ -58,9 +60,11 @@ let g:git_messenger_no_default_mappings = v:true
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 call sign_define('LightBulbSign', { "text" : "●", "texthl": "", "linehl":"", "numhl":"" })
 
-
-autocmd VimEnter * silent NERDTreeVCS %|  wincmd p
-" autocmd BufEnter * if &modifiable | NERDTreeFind | wincmd p | endif
+if argc() != 0 
+  autocmd VimEnter * silent NERDTreeVCS %|  wincmd p
+else
+  autocmd VimEnter * silent NERDTreeVCS | wincmd p
+end
 
 " returns true iff is NERDTree open/active
 function! s:isNTOpen()        
@@ -96,12 +100,6 @@ let g:scrollview_current_only = 1
 
 
 "save / restore session
-command! S ToggleWorkspace
-let g:workspace_session_disable_on_args=1
-let g:workspace_persist_undo_history = 0 "undodir already done
-let g:workspace_create_new_tabs = 0
-let g:workspace_autosave_untrailspaces = 0
-
 " register tabnine as completion source
 " call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
 "   \ 'name': 'tabnine',
