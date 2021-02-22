@@ -64,7 +64,7 @@ if argc() != 0
   autocmd VimEnter * silent NERDTreeVCS %|  wincmd p
 else
   autocmd VimEnter * silent NERDTreeVCS | wincmd p
-end
+endif
 
 " returns true iff is NERDTree open/active
 function! s:isNTOpen()        
