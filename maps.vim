@@ -58,6 +58,7 @@ map q <Nop>
 
 " fzf-telescope maps
 nnoremap <silent> <C-P> :lua require'telescope.builtin'.git_files{} <CR>
+nnoremap <silent> <C-O> :lua require'telescope.builtin'.find_files{} <CR>
 nnoremap <silent> <C-L> :lua require'telescope.builtin'.tags{}<CR>
 nnoremap <silent> <leader>t :lua require'telescope.builtin'.treesitter{}<CR>
 nnoremap <silent> <leader>w :lua require'telescope.builtin'.keymaps{}<CR>

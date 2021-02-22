@@ -96,7 +96,8 @@ let g:autoformat_retab = 0
 
 "scrollbar
 let g:scrollview_current_only = 1
-
+nmap <scrollwheelup> <scrollwheelup><plug>(ScrollViewRefresh)
+nmap <scrollwheeldown> <scrollwheeldown><plug>(ScrollViewRefresh)
 
 
 "save / restore session

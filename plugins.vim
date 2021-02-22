@@ -94,7 +94,6 @@ Plug 'rhysd/conflict-marker.vim' " git conflicts faster resolution
 " Plug 'mfussenegger/nvim-dap'
 " Plug 'theHamsta/nvim-dap-virtual-text'
 "
-Plug 'tikhomirov/vim-glsl'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'nvim-treesitter/playground', {'branch' : 'fix-catch-query-error'}
