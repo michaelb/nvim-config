@@ -22,7 +22,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " to re-enable when pc more powerful, and when things less buggy
 " Plug 'nvim-lua/completion-nvim'
 " Plug 'aca/completion-tabnine', {'do': './install.sh'}
-Plug 'zxqfl/tabnine-vim' "  autocompletion <3
+Plug 'michaelb/tabnine-vim' "  autocompletion <3 + my fix for filetype blacklist
 "
 " "write  & run
 Plug 'michaelb/sniprun', {'do': 'bash install.sh 1', 'branch':'dev'}
@@ -46,14 +46,25 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-symbols.nvim'
+Plug 'nvim-telescope/telescope-media-files.nvim'
 Plug 'ludovicchabant/vim-gutentags'
+
+
+" Plug 'rmagatti/alternate-toggler'
 
 Plug 'preservim/nerdtree'
 
+
 Plug 'chrisbra/Colorizer'
 
+
 Plug 'markonm/traces.vim' "selection/substitution preview
+
+Plug 'michaeljsmith/vim-indent-object' " 'i' text object: dii => delete inner indent
 Plug 'wellle/targets.vim' "additionnal text objects such as ')', ','
+Plug 'sgur/vim-textobj-parameter' "text object for function parameter
+Plug 'kana/vim-textobj-user' "text object provider (dependency)
+
 Plug 'sheerun/vim-polyglot' "config for all languages (color, etc...)
 Plug 'tpope/vim-endwise' "autoadd 'end' symbols (bash, ruby, lua....
 Plug 'tpope/vim-repeat' "allow . to repeat plugin actions
@@ -78,6 +89,8 @@ Plug 'lervag/vimtex'
 " Plug 'TaDaa/vimade' "fades unfocused buffer, but conflicts with treesitter
 Plug 'RRethy/vim-illuminate'
 
+Plug 'farmergreg/vim-lastplace'
+
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 Plug 'michaelb/vim-printer'
@@ -96,12 +109,15 @@ Plug 'rhysd/conflict-marker.vim' " git conflicts faster resolution
 "
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'nvim-treesitter/playground', {'branch' : 'fix-catch-query-error'}
+Plug 'nvim-treesitter/playground'
 "
 Plug 'michaelb/nvcode-color-schemes.vim'
 
+Plug 'andweeb/presence.nvim'
 
+Plug 'kyazdani42/nvim-web-devicons'
 " must be last plugin called
 Plug 'ryanoasis/vim-devicons'
+
 
 call plug#end()

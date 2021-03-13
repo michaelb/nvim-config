@@ -29,6 +29,8 @@ let g:nvcode_termcolors=256
 "vim-autoformat settings for corect java
 let g:formatdef_customjava="'astyle --mode=java --pad-oper -xe'"
 let g:formatters_java=['customjava']
+let g:formatdef_atosc="'astyle --style=mozilla --indent=tab'"
+let formatters_c=['atosc']
 
 " part of vim-polyglot
 let g:vim_markdown_conceal = 0
@@ -37,7 +39,7 @@ let g:vim_json_syntax_conceal = 0
     
 autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
 
-let g:ycm_filetype_blacklist = {"TelescopePrompt" : 0}
+let g:ycm_filetypes_to_completely_ignore = {"TelescopePrompt" : 1}
 autocmd FileType TelescopePrompt let g:ycm_auto_trigger = 1
     
 " diagnostic config

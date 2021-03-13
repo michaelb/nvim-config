@@ -41,8 +41,15 @@ telescope.setup{
 
     -- Developer configurations: Not meant for general override
     -- buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
-  }
+  },
+   extensions = {
+        media_files = {
+            filetypes = {"png", "webp", "jpg", "jpeg", "mp4", "webm", "pdf", "mkv","gif"},
+            find_cmd = "rg" -- find command (defaults to `fd`)
+        }
+    },
 }
+require("telescope").load_extension("media_files")
 
 vim.cmd[[highlight TelescopeBorder guifg=#4c4c4c]]
 vim.cmd[[highlight TelescopeSelection guifg=#ffffff guibg=#393939 gui=bold]]
