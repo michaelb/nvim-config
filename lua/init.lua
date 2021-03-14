@@ -52,6 +52,3 @@ require'nvim-treesitter.configs'.setup {
 
 
 require('_telescope')
-
-
-
