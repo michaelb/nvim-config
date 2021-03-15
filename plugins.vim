@@ -115,6 +115,7 @@ Plug 'michaelb/nvcode-color-schemes.vim'
 
 Plug 'andweeb/presence.nvim'
 
+" Plug 'yamatsum/nvim-web-nonicons'
 Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'bryanmylee/vim-colorscheme-icons'
 " must be last plugin called

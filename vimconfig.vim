@@ -41,6 +41,7 @@ if executable('rg')
 endif
 
 " COLORS!
+set termguicolors
 colorscheme aurorae
 
 
