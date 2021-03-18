@@ -30,4 +30,4 @@ lspconfig.pyls.setup{}
 -- }
 
 
-require('telescope')
+require('pluginconfig/telescope')
