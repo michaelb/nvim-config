@@ -38,6 +38,7 @@ Plug 'kosayoda/nvim-lightbulb'
 
 Plug 'ncm2/float-preview.nvim'
 
+
 "files + tags navigation
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
@@ -53,6 +54,10 @@ Plug 'ludovicchabant/vim-gutentags'
 " Plug 'rmagatti/alternate-toggler'
 
 Plug 'preservim/nerdtree'
+
+
+
+Plug 'nacro90/numb.nvim' "peek at line when :{number}
 
 
 Plug 'chrisbra/Colorizer'
@@ -74,10 +79,9 @@ Plug 'rhysd/git-messenger.vim'       "see preview of git commit introducing line
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Chiel92/vim-autoformat'
-" Plug 'vim-airline/vim-airline'
 Plug 'itchyny/lightline.vim/'
 
-Plug 'tpope/vim-commentary'
+Plug 'terrortylor/nvim-comment'
 Plug 'Yggdroot/indentLine' "display indentation level with thins lines
 Plug 'Jorengarenar/vim-MvVis'
 
@@ -95,18 +99,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 Plug 'michaelb/vim-printer'
 
-" Plug 'Xuyuanp/scrollbar.nvim'
 Plug 'dstein64/nvim-scrollview', {'branch': 'main'}
-" Plug 'wfxr/minimap.vim', {'do': ':!cargo install --locked code-minimap'}
-" "too bad the plugin is great
 
 Plug 'rhysd/conflict-marker.vim' " git conflicts faster resolution
 
-
-" debugguer, needs config
-" Plug 'mfussenegger/nvim-dap'
-" Plug 'theHamsta/nvim-dap-virtual-text'
-"
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
@@ -115,9 +111,8 @@ Plug 'michaelb/nvcode-color-schemes.vim'
 
 Plug 'andweeb/presence.nvim'
 
-" Plug 'yamatsum/nvim-web-nonicons'
 Plug 'kyazdani42/nvim-web-devicons'
-" Plug 'bryanmylee/vim-colorscheme-icons'
+
 " must be last plugin called
 Plug 'ryanoasis/vim-devicons'
 

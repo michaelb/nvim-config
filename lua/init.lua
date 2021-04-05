@@ -15,19 +15,36 @@ lspconfig.clangd.setup{}
 lspconfig.vimls.setup{}
 lspconfig.gopls.setup{}
 lspconfig.pyls.setup{}
+
+
+local sumneko_root_path = vim.fn.stdpath('cache')..'/lspconfig/sumneko_lua/lua-language-server'
+local sumneko_binary = "usr/bin/lua-language-server"
+lspconfig.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+}
 -- potential LSPs, additionnal can be added with :LspInstall
 -- require'nvim_lsp'.julials.setup{}
 -- require'nvim_lsp'.kotlin_language_server.setup{}
 -- require'nvim_lsp'.sumneko_lua.setup{}
 -- require'nvim_lsp'.jedi_language_server.setup{}
 
--- require'nvim-treesitter.configs'.setup {
---   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
---   highlight = {
---     enable = true,              -- false will disable the whole extension
---     disable = { "ocaml" },  -- list of language that will be disabled
---   },
--- }
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "ocaml" },  -- list of language that will be disabled
+  },
+}
 
+require'sniprun'.setup({
+  selected_interpreters = {'Python3_jupyter'},
+})
+
+
+vim.api.nvim_set_keymap('x', '<M-l>', ':move \'<-2<CR>gv-gv', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('x', '<M-h>', ':move \'>+1<CR>gv-gv', {noremap=true, silent=true})
+
+require('nvim_comment').setup()
 
 require('pluginconfig/telescope')
+require('pluginconfig/numb')
