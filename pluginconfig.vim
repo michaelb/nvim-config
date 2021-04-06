@@ -54,7 +54,8 @@ let g:git_messenger_no_default_mappings = v:true
 let g:conflict_marker_enable_mappings = 0
 
 
-" display type hints for rust-analyzer with lsp_extensions.nvim
+" display type hints for rust-analyzer with lsp_extensions.nvim, but now
+" provided by a separate plugin
 " autocmd InsertLeave,BufEnter * lua require'lsp_extensions'.inlay_hints{prefix ='', highlight = "Comment"}
 
 " some symbols that match my font (jetbrain mono)@ & ¶ § © ® ™ ° ′ ″ | ¦ † ℓ ‡ № ª º ℮ Δ Ω λ μ π ℕ ¢ ¤ $ ₫ € ƒ £ ₮ ₽ ¥ ∈ ≡ ∃ ∉ ⊄ + − × ÷ = ≠ > < ≥ ≤ ± ≈ ~ ¬ ^ ∞ ∅ ∧ ∨ ∫ ∏ ∑ √ ∂ µ % ‰ ⊂ ⊃ ⊆ ⊇ ∼ ∋ ⁺ ∌ ∐ ∕ ∙ ∣ ∥ ∷ ≉ ⊅ ∀ ↑ ↗ → ↘ ↓ ↙ ← ↖ ↔ ↕ ● ◆ ◊ ■ ▲ ▶ ▼ ◀ ⏻ ⏼ ⭘ ⏽ ⏾ ⍴        . , : ; … ! ¡ ? ¿ · • * # ․ / ( ) { } [ ] - ­ – — _ ‐ ‚ „ “ ” ‘ ’ « » ‹ › " ' ⟨ ⟩
@@ -62,28 +63,6 @@ let g:conflict_marker_enable_mappings = 0
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 call sign_define('LightBulbSign', { "text" : "●", "texthl": "", "linehl":"", "numhl":"" })
 
-if argc() != 0 
-  autocmd VimEnter * silent NERDTreeVCS %|  wincmd p
-else
-  autocmd VimEnter * silent NERDTreeVCS | wincmd p
-endif
-
-" returns true iff is NERDTree open/active
-function! s:isNTOpen()        
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-" calls NERDTreeFind iff NERDTree is active, current window contains a modifiable file, and we're not in vimdiff
-function! s:syncTree()
-  if &modifiable && s:isNTOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-autocmd BufEnter * call s:syncTree()
-
-
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
 
 
 " large file size in mb
@@ -102,24 +81,8 @@ nmap <scrollwheelup> <scrollwheelup><plug>(ScrollViewRefresh)
 nmap <scrollwheeldown> <scrollwheeldown><plug>(ScrollViewRefresh)
 
 
-"save / restore session
-" register tabnine as completion source
-" call asyncomplete#register_source(asyncomplete#sources#tabnine#get_source_options({
-"   \ 'name': 'tabnine',
-"   \ 'allowlist': ['*'],
-"   \ 'completor': function('asyncomplete#sources#tabnine#completor'),
-"   \ 'config': {
-"   \   'line_limit': 1000,
-"   \   'max_num_result': 20,
-"   \  },
-"   \ }))
-"
-"
-" call asyncomplete#register_source(asyncomplete#sources#nextword#get_source_options({
-"             \   'name': 'nextword',
-"             \   'allowlist': ['*'],
-"             \   'args': ['-n', '10000'],
-"             \   'completor': function('asyncomplete#sources#nextword#completor')
-"             \   }))
-"
-
+function  Nvimtreetoogleandleave()
+    lua require'nvim-tree'.toggle()
+    sleep 10ms
+    wincmd p
+endfunction

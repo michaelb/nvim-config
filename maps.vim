@@ -65,7 +65,6 @@ nnoremap <silent> <leader>w :lua require'telescope.builtin'.keymaps{}<CR>
 nnoremap <silent> <leader>c :lua require'telescope.builtin'.colorscheme{}<CR>
 
 
-noremap <leader>e :NERDTreeToggle<CR>
 
 
 

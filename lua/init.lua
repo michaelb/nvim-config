@@ -48,3 +48,6 @@ require('nvim_comment').setup()
 
 require('pluginconfig/telescope')
 require('pluginconfig/numb')
+require('pluginconfig/rust-tools')
+require('pluginconfig/galaxyline')
+require('pluginconfig/nvim-tree')

@@ -1,36 +1,20 @@
 
-"auto vim-plug install
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+"needs vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 
 
 
 "Code completion
-
-" More completion sources when necessary
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/async.vim'
-" Plug 'kitagry/asyncomplete-tabnine.vim', { 'do': './install.sh' }
-" needs nextword + nextword-data dependencies
-" Plug 'high-moctane/asyncomplete-nextword.vim'
-
-
-" to re-enable when pc more powerful, and when things less buggy
-" Plug 'nvim-lua/completion-nvim'
-" Plug 'aca/completion-tabnine', {'do': './install.sh'}
 Plug 'michaelb/tabnine-vim' "  autocompletion <3 + my fix for filetype blacklist
-"
-" "write  & run
+
+"write & run <3
 Plug 'michaelb/sniprun', {'do': 'bash install.sh 1', 'branch':'dev'}
-"
-" " linter
+
+
+" linter
 Plug 'neovim/nvim-lspconfig' "collection of common configs
-" Plug 'tjdevries/lsp_extensions.nvim' "inlay hint for rust-analyzer, but does
-" not work very well for now
+Plug 'simrat39/rust-tools.nvim' " rust analyzer things
+
 Plug 'glepnir/lspsaga.nvim'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'alexaandru/nvim-lspupdate'
@@ -40,9 +24,6 @@ Plug 'ncm2/float-preview.nvim'
 
 
 "files + tags navigation
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
-" Plug 'zackhsi/fzf-tags'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
@@ -51,9 +32,7 @@ Plug 'nvim-telescope/telescope-media-files.nvim'
 Plug 'ludovicchabant/vim-gutentags'
 
 
-" Plug 'rmagatti/alternate-toggler'
-
-Plug 'preservim/nerdtree'
+Plug 'kyazdani42/nvim-tree.lua'
 
 
 
@@ -79,7 +58,7 @@ Plug 'rhysd/git-messenger.vim'       "see preview of git commit introducing line
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Chiel92/vim-autoformat'
-Plug 'itchyny/lightline.vim/'
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
 
 Plug 'terrortylor/nvim-comment'
 Plug 'Yggdroot/indentLine' "display indentation level with thins lines
