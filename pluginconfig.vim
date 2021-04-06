@@ -81,8 +81,15 @@ nmap <scrollwheelup> <scrollwheelup><plug>(ScrollViewRefresh)
 nmap <scrollwheeldown> <scrollwheeldown><plug>(ScrollViewRefresh)
 
 
+let g:nvim_tree_status=0
 function  Nvimtreetoogleandleave()
-    lua require'nvim-tree'.toggle()
-    sleep 10ms
-    wincmd p
+    if g:nvim_tree_status == 1
+        lua require'nvim-tree'.close()
+        let g:nvim_tree_status = 0
+    else
+        lua require'nvim-tree'.open()
+        sleep 1ms
+        wincmd p
+        let g:nvim_tree_status = 1
+    end
 endfunction
