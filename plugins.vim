@@ -49,7 +49,6 @@ Plug 'wellle/targets.vim' "additionnal text objects such as ')', ','
 Plug 'sgur/vim-textobj-parameter' "text object for function parameter
 Plug 'kana/vim-textobj-user' "text object provider (dependency)
 
-Plug 'sheerun/vim-polyglot' "config for all languages (color, etc...)
 Plug 'tpope/vim-endwise' "autoadd 'end' symbols (bash, ruby, lua....
 Plug 'tpope/vim-repeat' "allow . to repeat plugin actions
 Plug 'flwyd/vim-conjoin' "join string when joining lines spanned by a multiline string

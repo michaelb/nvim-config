@@ -27,7 +27,8 @@ noremap <F3> :Autoformat<CR>
 nnoremap gb  :GitMessenger<CR>
 
 "sniprun line/bloc shortcut
-nmap <leader>f <Plug>SnipRun
+nmap <leader>ff <Plug>SnipRun
+nmap <leader>f <Plug>SnipRunOperator
 vmap f <Plug>SnipRun
 
 
