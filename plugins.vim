@@ -1,4 +1,3 @@
-
 "needs vim-plug
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -9,6 +8,7 @@ Plug 'michaelb/tabnine-vim' "  autocompletion <3 + my fix for filetype blacklist
 
 "write & run <3
 Plug 'michaelb/sniprun', {'do': 'bash install.sh 1', 'branch':'dev'}
+" Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 
 
 " linter
@@ -34,7 +34,7 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'kyazdani42/nvim-tree.lua'
 
-
+Plug 'sheerun/vim-polyglot'
 
 Plug 'nacro90/numb.nvim' "peek at line when :{number}
 

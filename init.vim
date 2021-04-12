@@ -6,3 +6,4 @@ source $HOME/.config/nvim/maps.vim
 
 " after plugin loading
 lua require'init'
+

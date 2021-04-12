@@ -35,6 +35,11 @@ require'nvim-treesitter.configs'.setup {
     disable = { "ocaml" },  -- list of language that will be disabled
   },
 }
+require'nvim-treesitter.configs'.setup {
+  indent = {
+    enable = true
+  }
+}
 
 require'sniprun'.setup({
   selected_interpreters = {'Python3_jupyter'},
