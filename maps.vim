@@ -27,9 +27,9 @@ noremap <F3> :Autoformat<CR>
 nnoremap gb  :GitMessenger<CR>
 
 "sniprun line/bloc shortcut
-nmap <leader>ff <Plug>SnipRun
-nmap <leader>f <Plug>SnipRunOperator
-vmap f <Plug>SnipRun
+" nmap <leader>ff <Plug>SnipRun
+" nmap <leader>f <Plug>SnipRunOperator
+" vmap f <Plug>SnipRun
 
 
 " LSP configs
@@ -85,8 +85,8 @@ nnoremap <silent> <leader>gb <Plug>(conflict-marker-both)
 "--- some brilliant line movement mappings from junegunn ---"
 " move current line up/down
 " M = Alt key
-nnoremap <silent> <M-k> :move-2<CR>
-nnoremap <silent> <M-j> :move+<CR>
+" nnoremap <silent> <M-k> :move-2<CR>
+" nnoremap <silent> <M-j> :move+<CR>
 
 " replace with last yank (not deleted or cut)
 nnoremap <leader>p "0p

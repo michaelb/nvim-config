@@ -42,12 +42,21 @@ require'nvim-treesitter.configs'.setup {
 }
 
 require'sniprun'.setup({
-  selected_interpreters = {'Python3_jupyter'},
+  repl_enable = {'Python3_original'},
+  selected_interpreters = {'Lua_nvim'},
+
+  display = {
+    "Classic",
+    "VirtualTextOk",
+    -- "VirtualTextErr",
+    -- "TempFloatingWindow",
+-- "Terminal"
+  },
 })
+vim.api.nvim_set_keymap('n', '<leader>f', '<Plug>SnipRun', {silent = true})
+vim.api.nvim_set_keymap('v', 'f', '<Plug>SnipRun', {silent = true})
 
 
-vim.api.nvim_set_keymap('x', '<M-l>', ':move \'<-2<CR>gv-gv', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('x', '<M-h>', ':move \'>+1<CR>gv-gv', {noremap=true, silent=true})
 
 require('nvim_comment').setup()
 
@@ -56,3 +65,4 @@ require('pluginconfig/numb')
 require('pluginconfig/rust-tools')
 require('pluginconfig/galaxyline')
 require('pluginconfig/nvim-tree')
+-- require('pluginconfig/which-key')

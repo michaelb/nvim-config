@@ -34,13 +34,12 @@ Plug 'ludovicchabant/vim-gutentags'
 
 Plug 'kyazdani42/nvim-tree.lua'
 
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 
 Plug 'nacro90/numb.nvim' "peek at line when :{number}
 
 
-Plug 'chrisbra/Colorizer'
-
+Plug 'RRethy/vim-hexokinase' , { 'do': 'make hexokinase' }
 
 Plug 'markonm/traces.vim' "selection/substitution preview
 
@@ -68,10 +67,13 @@ Plug 'michaelb/vim-tips', {'branch':'dev'}
 
 Plug 'lervag/vimtex'
 
+Plug 'tweekmonster/startuptime.vim'
+
 " Plug 'TaDaa/vimade' "fades unfocused buffer, but conflicts with treesitter
 Plug 'RRethy/vim-illuminate'
 
 Plug 'farmergreg/vim-lastplace'
+Plug 'matze/vim-move'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
@@ -87,6 +89,7 @@ Plug 'nvim-treesitter/playground'
 "
 Plug 'michaelb/nvcode-color-schemes.vim'
 
+" Plug 'folke/which-key.nvim'
 Plug 'andweeb/presence.nvim'
 
 Plug 'kyazdani42/nvim-web-devicons'

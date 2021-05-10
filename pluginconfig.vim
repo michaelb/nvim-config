@@ -29,8 +29,9 @@ let g:nvcode_termcolors=256
 "vim-autoformat settings for corect java
 let g:formatdef_customjava="'astyle --mode=java --pad-oper -xe'"
 let g:formatters_java=['customjava']
-let g:formatdef_atosc="'astyle --style=mozilla --indent=tab'"
-let formatters_c=['atosc']
+" let g:formatdef_atosc="'astyle --style=mozilla --indent=tab'"
+" let g:formattdef_atosc="'clang-format'"
+" let formatters_c=['atosc']
 
 " part of vim-polyglot
 let g:vim_markdown_conceal = 0
@@ -81,13 +82,15 @@ nmap <scrollwheelup> <scrollwheelup><plug>(ScrollViewRefresh)
 nmap <scrollwheeldown> <scrollwheeldown><plug>(ScrollViewRefresh)
 
 
-function  Nvimtreetoogleandleave()
+function! NvimTreeToggleCustom()
 lua << EOF
     local nt_lib = require'nvim-tree.lib'
-    if nt_lib.win_open() then
-        nt_lib.close()
+    if nt_lib.win_open ~= nil then
+        vim.cmd(":NvimTreeClose")
+        nt_lib.win_open = nil
     else
         nt_lib.open()
+        nt_lib.win_open = 1
         vim.cmd("wincmd p")
     end
 EOF

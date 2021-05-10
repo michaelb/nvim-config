@@ -8,9 +8,10 @@ set nobackup
 set ignorecase
 set smartcase
 set showmatch
-set softtabstop
-set expandtab
-set shiftwidth=2
+" set softtabstop
+" set expandtab
+set shiftwidth=4
+autocmd FileType c setlocal shiftwidth=2 tabstop=2
 set shiftround
 set nomodeline "useless anyway
 set lazyredraw "perf?
@@ -27,6 +28,8 @@ set wildmenu
 set wildmode=longest:full,full
 set wildignore+=*/tmp/*,/var/*,*.so,*.swp,*.zip,*.tar,*.pyc  " macOS/Linux
 set path+=**  " add current file location to path
+
+let g:loaded_python_provider=0 " who uses python2 anyway?
 
 
 set signcolumn=yes "keep sing gutter open
@@ -50,9 +53,8 @@ set foldlevel=6
 set incsearch "jumps to search word as you type (annoying but excellent)
 set wildignore=*.o,*.obj,*.bak,*.exe "ignore those in tabfind completion
 
-filetype plugin on
-filetype indent on
-set autoindent
+set indentexpr
+
 
 
 " Use persistent history.
@@ -66,3 +68,7 @@ set undofile
 " start terminal in insert mode
 autocmd BufEnter * if &buftype == 'terminal' | :startinsert | endif
 set timeoutlen=200
+
+
+" no line number in terminal
+autocmd TermOpen * setlocal nonu

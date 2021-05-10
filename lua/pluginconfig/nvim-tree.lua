@@ -46,7 +46,7 @@ end
 -- Mappings for nvimtree
 
 
-vim.api.nvim_set_keymap('n', '<leader>e', ':call Nvimtreetoogleandleave()<CR>', {
+vim.api.nvim_set_keymap('n', '<leader>e', ':call NvimTreeToggleCustom()<CR>', {
       noremap = true,
       silent = true
   })
