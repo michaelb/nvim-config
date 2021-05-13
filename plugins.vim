@@ -7,8 +7,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'michaelb/tabnine-vim' "  autocompletion <3 + my fix for filetype blacklist
 
 "write & run <3
-Plug 'michaelb/sniprun', {'do': 'bash install.sh 1', 'branch':'dev'}
-" Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
+" Plug 'michaelb/sniprun', {'do': 'bash install.sh 1', 'branch':'dev'}
+Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
 
 
 " linter
@@ -56,7 +56,7 @@ Plug 'rhysd/git-messenger.vim'       "see preview of git commit introducing line
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Chiel92/vim-autoformat'
-Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'famiu/feline.nvim'
 
 Plug 'terrortylor/nvim-comment'
 Plug 'Yggdroot/indentLine' "display indentation level with thins lines

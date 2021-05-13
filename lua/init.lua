@@ -57,12 +57,12 @@ vim.api.nvim_set_keymap('n', '<leader>f', '<Plug>SnipRun', {silent = true})
 vim.api.nvim_set_keymap('v', 'f', '<Plug>SnipRun', {silent = true})
 
 
+require('feline').setup()
 
 require('nvim_comment').setup()
 
 require('pluginconfig/telescope')
 require('pluginconfig/numb')
 require('pluginconfig/rust-tools')
-require('pluginconfig/galaxyline')
 require('pluginconfig/nvim-tree')
 -- require('pluginconfig/which-key')
