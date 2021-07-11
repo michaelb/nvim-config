@@ -53,7 +53,7 @@ set foldlevel=6
 set incsearch "jumps to search word as you type (annoying but excellent)
 set wildignore=*.o,*.obj,*.bak,*.exe "ignore those in tabfind completion
 
-set indentexpr
+" set indentexpr
 
 
 

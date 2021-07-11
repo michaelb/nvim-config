@@ -7,7 +7,9 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 let g:vimtex_compiler_progname='nvr'
-
+" but don't hide thing for markdown
+au FileType markdown let g:indentLine_setConceal= 0
+au FileType markdown setlocal conceallevel=0
 
 " move selection around horizontally, similarly to the mapping for line move
 vmap <M-h> <Plug>(MvVisLeft)

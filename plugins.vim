@@ -32,9 +32,9 @@ Plug 'nvim-telescope/telescope-media-files.nvim'
 Plug 'ludovicchabant/vim-gutentags'
 
 
+
 Plug 'kyazdani42/nvim-tree.lua'
 
-" Plug 'sheerun/vim-polyglot'
 
 Plug 'nacro90/numb.nvim' "peek at line when :{number}
 
@@ -56,6 +56,8 @@ Plug 'rhysd/git-messenger.vim'       "see preview of git commit introducing line
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Chiel92/vim-autoformat'
+
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'famiu/feline.nvim'
 
 Plug 'terrortylor/nvim-comment'
@@ -64,6 +66,9 @@ Plug 'Jorengarenar/vim-MvVis'
 
 Plug 'vim-scripts/LargeFile'
 Plug 'michaelb/vim-tips', {'branch':'dev'}
+
+Plug 'michaelb/do-nothing.vim'
+
 
 Plug 'lervag/vimtex'
 
@@ -83,11 +88,16 @@ Plug 'dstein64/nvim-scrollview', {'branch': 'main'}
 
 Plug 'rhysd/conflict-marker.vim' " git conflicts faster resolution
 
+Plug 'tpope/vim-surround'
+
+Plug 'RRethy/nvim-treesitter-textsubjects'
+
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 "
 Plug 'michaelb/nvcode-color-schemes.vim'
+Plug 'ishan9299/nvim-solarized-lua'
 
 " Plug 'folke/which-key.nvim'
 Plug 'andweeb/presence.nvim'
