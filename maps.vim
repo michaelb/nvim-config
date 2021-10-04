@@ -3,15 +3,15 @@ let mapleader = " "
 
 "autocompletion stuff
 " auto close preview window when done
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-function! s:ClosePumOrReturnNewline()
-    if pumvisible()
-        return "\<C-y>\<CR>"
-    else
-        return "\<CR>"
-    endif
-endfunction
-inoremap <silent> <CR> <C-r>=<SID>ClosePumOrReturnNewline()<CR>
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" function! s:ClosePumOrReturnNewline()
+"     if pumvisible()
+"         return "\<C-y>\<CR>"
+"     else
+"         return "\<CR>"
+"     endif
+" endfunction
+" inoremap <silent> <CR> <C-r>=<SID>ClosePumOrReturnNewline()<CR>
 
 "quick jump between split
 map <C-L> <C-W>l<C-W>
@@ -59,7 +59,7 @@ map q <Nop>
 
 " fzf-telescope maps
 nnoremap <silent> <C-P> :lua require'telescope.builtin'.git_files{} <CR>
-nnoremap <silent> <C-O> :lua require'telescope.builtin'.find_files{} <CR>
+" nnoremap <silent> <C-O> :lua require'telescope.builtin'.find_files{} <CR>
 nnoremap <silent> <C-L> :lua require'telescope.builtin'.tags{}<CR>
 nnoremap <silent> <leader>t :lua require'telescope.builtin'.treesitter{}<CR>
 nnoremap <silent> <leader>w :lua require'telescope.builtin'.keymaps{}<CR>

@@ -4,15 +4,25 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 
 "Code completion
-Plug 'michaelb/tabnine-vim' "  autocompletion <3 + my fix for filetype blacklist
+" Plug 'michaelb/tabnine-vim' "  autocompletion <3 + my fix for filetype blacklist
+
+" This is the main one
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+
+" 9000+ Snippets
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+
+
+
 
 "write & run <3
 " Plug 'michaelb/sniprun', {'do': 'bash install.sh 1', 'branch':'dev'}
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}
+Plug 'rcarriga/nvim-notify'
 
 
 " linter
-Plug 'neovim/nvim-lspconfig' "collection of common configs
+Plug 'neovim/nvim-lspconfig', {'commit' : '59bc16aa2c9cfc6f8c2a67ae01635eeea1d43943'} "collection of common configs
 Plug 'simrat39/rust-tools.nvim' " rust analyzer things
 
 Plug 'glepnir/lspsaga.nvim'
@@ -58,14 +68,14 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Chiel92/vim-autoformat'
 
 Plug 'lewis6991/gitsigns.nvim'
-Plug 'famiu/feline.nvim'
+Plug 'beauwilliams/statusline.lua'
 
 Plug 'terrortylor/nvim-comment'
 Plug 'Yggdroot/indentLine' "display indentation level with thins lines
 Plug 'Jorengarenar/vim-MvVis'
 
 Plug 'vim-scripts/LargeFile'
-Plug 'michaelb/vim-tips', {'branch':'dev'}
+Plug 'michaelb/vim-tips'
 
 Plug 'michaelb/do-nothing.vim'
 
@@ -76,6 +86,7 @@ Plug 'tweekmonster/startuptime.vim'
 
 " Plug 'TaDaa/vimade' "fades unfocused buffer, but conflicts with treesitter
 Plug 'RRethy/vim-illuminate'
+Plug 'henriquehbr/nvim-startup.lua'
 
 Plug 'farmergreg/vim-lastplace'
 Plug 'matze/vim-move'
@@ -86,14 +97,14 @@ Plug 'michaelb/vim-printer'
 
 Plug 'dstein64/nvim-scrollview', {'branch': 'main'}
 
-Plug 'rhysd/conflict-marker.vim' " git conflicts faster resolution
+" Plug 'rhysd/conflict-marker.vim' " git conflicts faster resolution
 
 Plug 'tpope/vim-surround'
 
 Plug 'RRethy/nvim-treesitter-textsubjects'
 
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': '0.5-compat'}
 Plug 'nvim-treesitter/playground'
 "
 Plug 'michaelb/nvcode-color-schemes.vim'

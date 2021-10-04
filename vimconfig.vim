@@ -1,4 +1,3 @@
-
 set encoding=utf-8
 set clipboard=unnamed
 set clipboard+=unnamedplus
@@ -21,7 +20,7 @@ set splitright
 set exrc "per-project config override possible in local .nvimrc
 
 set spelllang=en,fr
-set completeopt=noinsert,menuone,noselect
+set completeopt=noinsert,menuone
 " set completeopt+=preview "disable preview in tabnine
 set noshowmode
 set wildmenu

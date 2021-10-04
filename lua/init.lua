@@ -1,4 +1,4 @@
-local lspconfig = require'lspconfig'
+local lspconfig = require('lspconfig')
 local configs = require'lspconfig/configs'
 
 
@@ -6,48 +6,6 @@ local saga = require'lspsaga'
 saga.init_lsp_saga{
   code_action_keys = { quit = '<Esc>',exec = '<CR>' }
 }
-
-
--- lspconfig.rls.setup{}
-lspconfig.rust_analyzer.setup{}
-lspconfig.bashls.setup{}
-lspconfig.clangd.setup{}
-lspconfig.vimls.setup{}
-lspconfig.gopls.setup{}
-lspconfig.pyls.setup{}
-lspconfig.julials.setup{}
-lspconfig.html.setup{}
-
-
-require'lspconfig'.sumneko_lua.setup {
-  cmd = {"/home/michael/scripts/lua-language-server/bin/Linux/lua-language-server", "-E", "/home/michael/scripts/lua-language-server" .. "/main.lua"};
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = vim.split(package.path, ';'),
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = {
-          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-        },
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
-
 
 
 
@@ -62,15 +20,11 @@ require'nvim-treesitter.configs'.setup {
     disable = { "ocaml" },  -- list of language that will be disabled
   },
 }
--- require'nvim-treesitter.configs'.setup {
---   indent = {
---     enable = true
---   }
--- }
 
 require'sniprun'.setup({
   -- repl_enable = {'Python3_original'},
   selected_interpreters = {'Lua_nvim', 'Python3_fifo'},
+  repl_enable = {'Python3_original'},
 
   display = {
     "Classic",
@@ -78,7 +32,9 @@ require'sniprun'.setup({
     -- "VirtualTextErr",
     -- "TempFloatingWindow",
     -- "Terminal"
+    -- "NvimNotify",
   },
+  show_no_output = {"NvimNotify", "VirtualTextOk"},
 })
 vim.api.nvim_set_keymap('n', '<leader>f', '<Plug>SnipRun', {silent = true})
 vim.api.nvim_set_keymap('v', 'f', '<Plug>SnipRun', {silent = true})
@@ -93,12 +49,34 @@ require'nvim-treesitter.configs'.setup {
     },
 }
 
-require('feline').setup()
+local statusline = require('statusline')
+statusline.tabline = false
 
 require('nvim_comment').setup()
 
 require('pluginconfig/telescope')
+require('pluginconfig/lightbulb')
 require('pluginconfig/numb')
-require('pluginconfig/rust-tools')
 require('pluginconfig/nvim-tree')
--- require('pluginconfig/which-key')
+
+-- lspconfig.rust_analyzer.setup(coq.lsp_ensure_capabilities({}))
+-- lspconfig.bashls.setup(coq.lsp_ensure_capabilities({}))
+-- lspconfig.clangd.setup(coq.lsp_ensure_capabilities({}))
+-- lspconfig.vimls.setup(coq.lsp_ensure_capabilities({}))
+-- lspconfig.gopls.setup(coq.lsp_ensure_capabilities({}))
+-- lspconfig.pyls.setup(coq.lsp_ensure_capabilities({}))
+-- lspconfig.julials.setup(coq.lsp_ensure_capabilities({}))
+-- lspconfig.html.setup(coq.lsp_ensure_capabilities({}))
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+-- Enable the following language servers
+local servers = { 'clangd', 'rust_analyzer', 'pyls', 'julials', 'html', 'bashls', 'vimls', 'gopls', 'dartls'}
+for _, lsp in ipairs(servers) do
+  require('lspconfig')[lsp].setup {
+    -- You will probably want to add a custom on_attach here to locally map keybinds to buffers with an active client
+    -- on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end

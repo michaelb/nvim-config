@@ -1,4 +1,5 @@
-
+let g:coq_settings = { "clients.tabnine.enabled": v:true}
+autocmd VimEnter * COQnow --shut-up
 
 " latex settings
 let g:tex_flavor='latex'
@@ -63,8 +64,8 @@ let g:conflict_marker_enable_mappings = 0
 
 " some symbols that match my font (jetbrain mono)@ & ¶ § © ® ™ ° ′ ″ | ¦ † ℓ ‡ № ª º ℮ Δ Ω λ μ π ℕ ¢ ¤ $ ₫ € ƒ £ ₮ ₽ ¥ ∈ ≡ ∃ ∉ ⊄ + − × ÷ = ≠ > < ≥ ≤ ± ≈ ~ ¬ ^ ∞ ∅ ∧ ∨ ∫ ∏ ∑ √ ∂ µ % ‰ ⊂ ⊃ ⊆ ⊇ ∼ ∋ ⁺ ∌ ∐ ∕ ∙ ∣ ∥ ∷ ≉ ⊅ ∀ ↑ ↗ → ↘ ↓ ↙ ← ↖ ↔ ↕ ● ◆ ◊ ■ ▲ ▶ ▼ ◀ ⏻ ⏼ ⭘ ⏽ ⏾ ⍴        . , : ; … ! ¡ ? ¿ · • * # ․ / ( ) { } [ ] - ­ – — _ ‐ ‚ „ “ ” ‘ ’ « » ‹ › " ' ⟨ ⟩
 
-autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
-call sign_define('LightBulbSign', { "text" : "●", "texthl": "", "linehl":"", "numhl":"" })
+autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb({sign = {enabled=false}})
+" call sign_define('LightBulbSign', { "text" : "●", "texthl": "", "linehl":"", "numhl":"" })
 
 
 
