@@ -79,7 +79,12 @@ return packer.startup(function(use)
   -- My own plugins
   use {
     "michaelb/sniprun",
-    run = "bash install.sh"
+    branch = "dev",
+    run = "bash install.sh 1"
+  }
+  use  {
+    'michaelb/vim-tips',
+    config = "vim.g.vim_tips_display_at_startup=0"
   }
 
   use "rcarriga/nvim-notify"

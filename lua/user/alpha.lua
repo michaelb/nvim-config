@@ -28,7 +28,8 @@ local function footer()
 	-- local fortune = handle:read("*a")
 	-- handle:close()
 	-- return fortune
-	return "chrisatmachine.com"
+  vim.cmd("runtime plugin/vim-tips.vim")
+	return "\n\n\n\nTip =>      " .. vim.fn.eval("GetTip()")
 end
 
 dashboard.section.footer.val = footer()
