@@ -92,11 +92,6 @@ local mappings = {
   ["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
 
-  c = {
-    name = "Comment",
-    c = { "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", "Current line" }
-  },
-
   g = {
     name = "Git",
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },

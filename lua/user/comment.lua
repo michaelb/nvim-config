@@ -4,7 +4,12 @@ if not status_ok then
 end
 
 comment.setup({
-
+    toggler = {
+        ---Line-comment toggle keymap
+        line = '<leader>cc',
+        ---Block-comment toggle keymap
+        block = '<leader>bc',
+    },
   opleader = {
       ---Line-comment keymap
       line = '<leader>c',
