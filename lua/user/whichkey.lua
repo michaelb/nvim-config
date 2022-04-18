@@ -92,6 +92,8 @@ local mappings = {
   ["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
   ["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
 
+  ["x"] = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
+
   g = {
     name = "Git",
     g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
@@ -122,15 +124,15 @@ local mappings = {
     i = { "<cmd>LspInfo<cr>", "Info" },
     I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
     j = {
-      "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+      "<cmd>lua vim.diagnostic.goto_next()<CR>",
       "Next Diagnostic",
     },
     k = {
-      "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
+      "<cmd>lua vim.diagnostic.goto_prev()<cr>",
       "Prev Diagnostic",
     },
     L = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-    l = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>", "Open diagnostic" },
+    l = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Open diagnostic" },
     r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
     R = { "<cmd>lua vim.lsp.buf.references()<CR>", "References" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
@@ -178,6 +180,7 @@ local vopts = {
 local vmappings = {
   r = { ":'<,'>SnipRun<cr>", "SnipRun" }
 }
+
 
 
 which_key.setup(setup)

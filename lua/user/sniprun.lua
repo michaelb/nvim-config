@@ -17,4 +17,5 @@ end
      -- "NvimNotify",
    },
    show_no_output = {"NvimNotify", "VirtualTextOk"},
+   live_mode_toggle = 'enable',
 })
