@@ -43,8 +43,9 @@ return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Have packer manage itself
     use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
     use "nvim-lua/plenary.nvim" -- Useful lua functions used by lots of plugins
-    --use "numToStr/Comment.nvim" -- Easily comment stuff
-    use "terrortylor/nvim-comment"
+
+    use "tomtom/tcomment_vim"
+
     use "kyazdani42/nvim-web-devicons"
     use "kyazdani42/nvim-tree.lua"
     use "moll/vim-bbye"
@@ -60,6 +61,7 @@ return packer.startup(function(use)
     use "editorconfig/editorconfig-vim"
     use "dstein64/nvim-scrollview"
 
+
     use "tpope/vim-endwise"
     use "tpope/vim-repeat"
     use "flwyd/vim-conjoin"
@@ -72,6 +74,8 @@ return packer.startup(function(use)
 
     use 'andweeb/presence.nvim' -- discord presence
 
+    use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
+
     use {
         "RRethy/vim-hexokinase",
         run = "make hexokinase"
@@ -83,6 +87,11 @@ return packer.startup(function(use)
         branch = "dev",
         run = "bash install.sh 1"
     }
+    -- use {
+    --    "michaelb/sniprun",
+    --     run = "bash ./install.sh"
+    -- }
+    --
     use {
         'michaelb/vim-tips',
         config = "vim.g.vim_tips_display_at_startup=0"
@@ -118,7 +127,7 @@ use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make'}
 use {'tzachar/fuzzy.nvim', requires = {'nvim-telescope/telescope-fzf-native.nvim'}}
     use "tzachar/cmp-fuzzy-buffer"
     use "hrsh7th/cmp-calc" 
-    --use "onsails/lspkind.nvim"
+    use "onsails/lspkind.nvim"
 
     -- use { 'ms-jpq/coq_nvim', branch= 'coq'}
     --use {  "ms-jpq/coq.artifacts", branch= 'artifacts' }
@@ -148,7 +157,6 @@ use {'tzachar/fuzzy.nvim', requires = {'nvim-telescope/telescope-fzf-native.nvim
             'mfussenegger/nvim-dap'
         }
     }
-    use { 'CRAG666/code_runner.nvim', requires = 'nvim-lua/plenary.nvim' }
 
     -- More targets
     use 'michaeljsmith/vim-indent-object' -- 'i' text object: dii => delete inner indent

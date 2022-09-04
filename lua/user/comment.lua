@@ -5,15 +5,13 @@ if status_ok then
 comment.setup({
     toggler = {
         ---Line-comment toggle keymap
-        line = '<leader>cc',
+        line = 'gcc',
         ---Block-comment toggle keymap
         block = '<leader>bc',
     },
   opleader = {
-      ---Line-comment keymap
-      line = '<leader>c',
       ---Block-comment keymap
-      block = '<leader>b',
+      block = 'gc',
   },
   extra = {
         ---Add comment on the line above
