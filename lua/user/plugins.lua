@@ -109,8 +109,6 @@ return packer.startup(function(use)
     use "hrsh7th/cmp-path" -- path completions
     use "hrsh7th/cmp-cmdline" -- cmdline completions
     use "hrsh7th/cmp-nvim-lsp"
-    use "hrsh7th/cmp-vsnip"
-    use "hrsh7th/vim-vsnip"
     use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
     use "petertriho/cmp-git"
     use "tamago324/cmp-zsh" -- needs zsh/zpty moduel :  zmodload zsh/zpty 

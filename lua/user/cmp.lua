@@ -55,15 +55,6 @@ local kind_icons = {
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup {
-    snippet = {
-        -- REQUIRED - you must specify a snippet engine
-        expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-        end,
-    },
     sorting = {
         comparators = {
             cmp.config.compare.kind,
@@ -77,6 +68,7 @@ cmp.setup {
             cmp.config.compare.sort_text,
         }
     },
+    preselect = cmp.PreselectMode.None,
     mapping = {
         ["<C-k>"] = cmp.mapping.select_prev_item(),
         ["<C-j>"] = cmp.mapping.select_next_item(),
@@ -94,8 +86,6 @@ cmp.setup {
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif vim.fn["vsnip#available"](1) == 1 then
-                feedkey("<Plug>(vsnip-expand-or-jump)", "")
             elseif has_words_before() then
                 cmp.complete()
             else
@@ -107,8 +97,6 @@ cmp.setup {
         ["<S-Tab>"] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-                feedkey("<Plug>(vsnip-jump-prev)", "")
             end
         end, { "i", "s" }),
     },
@@ -123,7 +111,6 @@ cmp.setup {
                 nvim_lsp = "[LSP]",
                 vsnip = "[Snip]",
                 fuzzy_buffer = "[Buf]",
-                cmdline = "[cmd]",
                 path = "[Path]",
                 cmp_tabnine = "[T9]",
                 cmp_git = "[GIT]",
@@ -134,16 +121,27 @@ cmp.setup {
             })
         }),
     },
+    enabled = function()
+          -- disable completion in comments
+          local context = require 'cmp.config.context'
+          -- keep command mode completion enabled when cursor is in a comment
+          if vim.api.nvim_get_mode().mode == 'c' then
+            return true
+          else
+            return not context.in_treesitter_capture("comment") 
+              and not context.in_syntax_group("Comment")
+          end
+      end,
+
     sources = {
         { name = "nvim_lsp" },
         { name = "vsnip" },
-        { name = "cmdline" },
         { name = "path" },
         { name = "cmp_tabnine" },
         { name = "cmp_git" },
         { name = "emoji" },
         { name = "crates" },
-        -- { name = "zsh" },
+        { name = "zsh" },
         { name = "fuzzy_buffer" },
         { name = "calc" },
     },
